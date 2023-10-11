@@ -1,4 +1,4 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, ScrollView } from "react-native";
 import React from "react";
 import styles from "../SignUp/style";
 import InputForm from "../../components/InputForm";
@@ -36,8 +36,6 @@ export default function SignUp() {
 				<InputForm label="Data de Nascimento" placeholder="11/10/2023" />
 				<InputForm label="CPF" placeholder="***.***.***-**" />
 				<InputForm label="Email" placeholder="fulanodetal@gmail.com" />
-				<InputForm label="Senha" placeholder="******" />
-				<InputForm label="Senha" placeholder="******" />
 				<InputForm label="Senha" placeholder="******" />
 				<View style={styles.button}>
 					<Button label="Abra sua Conta" />
