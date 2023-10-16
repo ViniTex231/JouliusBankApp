@@ -29,6 +29,12 @@ export default function Welcome() {
           </TouchableOpacity>
         </View>
 
+        <View style={styles.labelPJ}>
+          <TouchableOpacity>
+            <Text style={styles.textPJ}>Abrir Conta PJ</Text>
+          </TouchableOpacity>
+        </View>
+
       </View>
     </View>
   )

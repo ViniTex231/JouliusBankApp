@@ -1,19 +1,26 @@
 import { StyleSheet } from "react-native";
 
+const COLORS = {
+  primaryPurple: "#54007C",
+  borderPurple: "#A800F9",
+  normalWhite: "#fff",
+  text: "#a1a1a1",
+}
+
 const styles = StyleSheet.create({
     container:{
       flex: 1,
-      backgroundColor: '#54007C',
+      backgroundColor: COLORS.primaryPurple,
     },
     containerLogo:{
       flex: 2,
-      backgroundColor: '#54007C',
+      backgroundColor: COLORS.primaryPurple,
       justifyContent: 'center',
       alignItems: 'center',
     },
     containerForm:{
       flex: 1,
-      backgroundColor: '#fff',
+      backgroundColor: COLORS.normalWhite,
       borderTopRightRadius: 25,
       borderTopLeftRadius: 25,
       paddingStart: '5%',
@@ -26,7 +33,7 @@ const styles = StyleSheet.create({
       marginBottom: 12,
     },
     text:{
-      color: '#a1a1a1',
+      color: COLORS.text,
     },
     buttonContainer:{
       flexDirection: 'row',
@@ -47,7 +54,7 @@ const styles = StyleSheet.create({
       alignItems: 'center',
     },
     buttonConta:{
-      backgroundColor: '#A800F9',
+      backgroundColor: COLORS.borderPurple,
       borderRadius: 50,
       paddingVertical: 8,
       width: '48%',
@@ -56,10 +63,18 @@ const styles = StyleSheet.create({
       alignItems: 'center',
     },
     buttonTextLogin:{
-      color: '#54007c',
+      color: COLORS.primaryPurple,
     },
     buttonTextConta:{
       color: '#000',
+    },
+    labelPJ:{
+      paddingVertical: 8,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    textPJ:{
+      color: COLORS.text,
     },
 })
 

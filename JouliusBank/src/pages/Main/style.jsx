@@ -12,8 +12,10 @@ const styles = StyleSheet.create({
     },
     header:{
         width: "100%",
-        height: "20%",
+        height: "15%",
         backgroundColor: 'red',
+        display: 'flex',
+        flexDirection: 'row',
     },
     boxBalance:{
         backgroundColor: 'yellow',
@@ -55,6 +57,7 @@ const styles = StyleSheet.create({
         gap: 10,
         justifyContent: 'center',
         alignItems: 'center',
+        backgroundColor: 'green',
     },
     menuButton:{
         backgroundColor: COLORS.primaryPurple,
@@ -71,6 +74,37 @@ const styles = StyleSheet.create({
     },
     service:{
         color: COLORS.normalWhite,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    activitiesForm:{
+        paddingStart: "5%",
+        paddingTop: "10%",
+        backgroundColor: 'blue',
+    },
+    activitiesText:{
+        borderBottomColor: COLORS.borderPurple,
+        borderBottomWidth: 2,
+        width: "30%",
+        color: "#a1a1a1",
+    },
+    activity:{
+        paddingTop: "5%",
+        paddingStart: "3%",
+        display: 'flex',
+        flexDirection: 'row',
+        gap: 10,
+    },
+    name:{
+        fontSize: 14,
+    },
+    data:{
+        fontSize: 14,
+    },
+    price:{
+        fontSize: 18,
+        marginStart: 80,
+        backgroundColor: 'yellow',
         alignItems: 'center',
         justifyContent: 'center',
     }

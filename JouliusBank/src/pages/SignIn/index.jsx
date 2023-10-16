@@ -1,4 +1,4 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import styles from "../SignIn/style";
 import InputForm from "../../components/InputForm";
@@ -10,7 +10,9 @@ export default function SignIn() {
 		<View style={styles.container}>
 			<View style={styles.containerLogin}>
 				<View>
-					<AntDesign name="arrowleft" size={30} color={"#fff"} style={styles.icon} />
+					<TouchableOpacity>
+						<AntDesign name="arrowleft" size={30} color={"#fff"} style={styles.icon} />
+					</TouchableOpacity>
 				</View>
 				<View style={styles.containerImage}>
 					<Image
