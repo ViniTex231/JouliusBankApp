@@ -4,8 +4,8 @@ import { MaterialIcons, FontAwesome } from "@expo/vector-icons";
 
 export default function MenuButton(props) {
 	return (
-		<View style={styles.menuButton}>
-			<TouchableOpacity>
+		<View>
+			<TouchableOpacity style={styles.menuButton}>
 				<View>
 					<FontAwesome
 						name="money"

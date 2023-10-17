@@ -4,6 +4,9 @@ import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
 import Main from "../pages/Main";
 import SignUpPJ from "../pages/SignUpPJ";
+import Card from "../pages/Card";
+import Extract from "../pages/Extract";
+import Pix from "../pages/Pix";
 
 const Stack = createNativeStackNavigator();
 
@@ -34,11 +37,30 @@ export default function Routes() {
 				options={{ headerShown: false }}
 			/> */}
 
-			<Stack.Screen
+			{/* <Stack.Screen
 				name="Main"
 				component={Main}
 				options={{ headerShown: false }}
+			/> */}
+
+			{/* <Stack.Screen
+				name="Card"
+				component={Card}
+				options={{ headerShown: false }}
+			/> */}
+
+			{/* <Stack.Screen
+				name="Extract"
+				component={Extract}
+				options={{ headerShown: false }}
+			/> */}
+
+			<Stack.Screen
+				name="Pix"
+				component={Pix}
+				options={{ headerShown: false }}
 			/>
+			
 		</Stack.Navigator>
 	);
 }

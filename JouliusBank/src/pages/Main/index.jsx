@@ -2,7 +2,7 @@ import { View, Text, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import styles from "./style";
 import MenuButton from "../../components/MenuButton";
-import { FontAwesome } from "@expo/vector-icons";
+import Activity from "../../components/Activity";
 
 export default function Main() {
 	return (
@@ -10,15 +10,14 @@ export default function Main() {
 			<View style={styles.header}>
 				<Image
 					source={require("../../assets/iconeLogo.png")}
-					style={{ width: "100%" }}
-					resizeMode="contain"
+					// style={{ width: "100%" }}
+					// resizeMode="contain"
 				/>
 				<Image
 					source={require("../../assets/man.png")}
-					style={{ width: "100%" }}
+					style={styles.imageMan}
 					resizeMode="contain"
 				/>
-
 			</View>
 
 			<View style={styles.boxBalance}>
@@ -46,19 +45,21 @@ export default function Main() {
 			<View style={styles.activitiesForm}>
 				<Text style={styles.activitiesText}>Sua atividade</Text>
 
-				<View style={styles.activity}>
-					<FontAwesome 
-						name="credit-card"
-						size={30}
-						color={"#000"}
-						style={styles.icon}
-					/>
-					<View>
-						<Text style={styles.name}>Compra em Fazendinha</Text>
-						<Text style={styles.data}>24/07 - 23:48</Text>
-					</View>
-					<Text style={styles.price}>R$ 384,53</Text>
-				</View>
+				<Activity
+					name="Compra em Fazendinha"
+					date="22/07 - 23:50"
+					value="R$ 325,15"
+				/>
+				<Activity
+					name="Compra em Fazendinha"
+					date="22/07 - 23:50"
+					value="R$ 325,15"
+				/>
+				<Activity
+					name="Compra em Fazendinha"
+					date="22/07 - 23:50"
+					value="R$ 325,15"
+				/>
 			</View>
 		</View>
 	);

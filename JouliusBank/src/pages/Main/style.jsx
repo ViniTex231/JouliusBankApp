@@ -13,17 +13,16 @@ const styles = StyleSheet.create({
     header:{
         width: "100%",
         height: "15%",
-        backgroundColor: 'red',
         display: 'flex',
-        flexDirection: 'row',
+        justifyContent: 'center',
+        paddingStart: "5%"
     },
     boxBalance:{
-        backgroundColor: 'yellow',
         width: "100%",
         height: "25%",
         justifyContent: 'center',
         alignItems: 'center',
-
+        marginTop: 0,
     },
     balance:{
         backgroundColor: COLORS.primaryPurple,
@@ -57,7 +56,6 @@ const styles = StyleSheet.create({
         gap: 10,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'green',
     },
     menuButton:{
         backgroundColor: COLORS.primaryPurple,
@@ -80,7 +78,8 @@ const styles = StyleSheet.create({
     activitiesForm:{
         paddingStart: "5%",
         paddingTop: "10%",
-        backgroundColor: 'blue',
+        display: 'flex',
+        flexDirection: 'column',
     },
     activitiesText:{
         borderBottomColor: COLORS.borderPurple,
@@ -94,19 +93,33 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
         gap: 10,
+        justifyContent: 'space-between',
+        paddingRight: "5%"
     },
     name:{
         fontSize: 14,
+        overflow: 'hidden',
+        width: '100%',
+
+
     },
     data:{
         fontSize: 14,
     },
     price:{
-        fontSize: 18,
-        marginStart: 80,
-        backgroundColor: 'yellow',
+        fontSize: 16,
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    imageMan: {
+        width: 70,
+        position: 'absolute',
+        top: -200,
+        right: 20
+    },
+    activityTest: {
+        width: 250,
+        
     }
 })
 
