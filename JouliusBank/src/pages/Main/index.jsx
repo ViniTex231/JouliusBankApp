@@ -4,7 +4,7 @@ import styles from "./style";
 import MenuButton from "../../components/MenuButton";
 import Activity from "../../components/Activity";
 
-export default function Main() {
+export default function Main({ navigation }) {
 	return (
 		<View style={styles.container}>
 			<View style={styles.header}>
@@ -25,7 +25,9 @@ export default function Main() {
 					<Text style={styles.textSaldo}>Saldo</Text>
 					<Text style={styles.textBalance}>R$ 10.000,00</Text>
 					<View style={styles.boxOptions}>
-						<TouchableOpacity>
+						<TouchableOpacity
+						onPress={() => navigation.navigate('Extract')}
+						>
 							<Text style={styles.textOptions}>Ver Extrato</Text>
 						</TouchableOpacity>
 						<TouchableOpacity>
@@ -36,7 +38,9 @@ export default function Main() {
 			</View>
 
 			<View style={styles.menuButtons}>
-				<MenuButton icon="" label="Pix" />
+				<TouchableOpacity onPress={() => navigation.navigate('Pix')}>
+					<MenuButton icon="" label="Pix" />
+				</TouchableOpacity>
 				<MenuButton icon="" label="Empréstimos" />
 				<MenuButton icon="" label="Pagamentos" />
 				<MenuButton icon="" label="Cartões" />

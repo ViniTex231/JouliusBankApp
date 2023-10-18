@@ -32,9 +32,9 @@ const styles = StyleSheet.create({
 		paddingBottom: "5%",
 	},
 	containerForm: {
-        flex: 1,
+		flex: 1,
 		paddingStart: "5%",
-        paddingEnd: "5%",
+		paddingEnd: "5%",
 		marginTop: "5%",
 	},
 	inputView: {
@@ -50,29 +50,29 @@ const styles = StyleSheet.create({
 		// paddingStart: '5%',
 		opacity: 0.5,
 	},
-    button:{
-        // flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        position: 'absolute',
-        bottom: 50,
-        left: 0,
-        right: 0
-    },
-	buttonLogin:{
+	button: {
+		// flex: 1,
+		justifyContent: "center",
+		alignItems: "center",
+		position: "absolute",
+		bottom: 50,
+		left: 0,
+		right: 0,
+	},
+	buttonLogin: {
 		backgroundColor: COLORS.primaryPurple,
 		borderRadius: 10,
 		paddingVertical: 8,
 		justifyContent: "center",
 		alignItems: "center",
-        width: 200,
+		width: 200,
 	},
-    buttonTextLogin:{
-        color: '#fff',
-    },
-    icon:{
-        paddingStart: "3%",
-    }
+	buttonTextLogin: {
+		color: "#fff",
+	},
+	icon: {
+		paddingStart: "3%",
+	},
 });
 
 export default styles;

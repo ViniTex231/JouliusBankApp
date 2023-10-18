@@ -4,12 +4,12 @@ import styles from "./style";
 import Activity from "../../components/Activity";
 import { AntDesign } from "@expo/vector-icons";
 
-export default function Extract() {
+export default function Extract({ navigation }) {
 	return (
 		<View style={styles.container}>
 			<View style={styles.containerExtract}>
 				<View>
-					<TouchableOpacity>
+					<TouchableOpacity onPress={() => navigation.navigate('Main')}>
 						<AntDesign
 							name="arrowleft"
 							size={30}

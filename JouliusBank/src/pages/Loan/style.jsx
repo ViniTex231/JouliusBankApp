@@ -1,9 +1,9 @@
 import { StyleSheet } from "react-native";
 
 const COLORS = {
-    primaryPurple: "#54007C",
-    borderPurple: "#A800F9",
-    normalWhite: "#fff",
+  primaryPurple: "#54007C",
+  borderPurple: "#A800F9",
+  normalWhite: "#fff",
 }
 
 const styles = StyleSheet.create({
@@ -18,33 +18,25 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingStart: "5%",
-  },
-  destinyAccount:{
-    paddingStart: "5%",
-    marginTop: "5%",
+    paddingStart: '5%',
   },
   value:{
-    paddingStart: "5%",
-    marginTop: "5%",
+    paddingStart: '5%',
+    marginTop: '5%',
   },
   textValue:{
     borderBottomColor: COLORS.borderPurple,
     borderBottomWidth: 2,
-    width: "30%",
-    color: "#727272",
+    width: '30%',
+    color: '#727272',
   },
   boxValue:{
     alignItems: 'center',
     justifyContent: 'center',
   },
   input:{
-    marginTop: "5%",
-    fontSize: 32, 
-  },
-  description:{
-    paddingStart: "5%",
-    // marginTop: "5%",
+    marginTop: '5%',
+    fontSize: 32,
   },
   button:{
     backgroundColor: COLORS.primaryPurple,
@@ -52,8 +44,8 @@ const styles = StyleSheet.create({
     height: 72,
     borderRadius: 10,
     display: 'flex',
-    marginTop: "80%",
-    marginLeft: "70%",
+    marginTop: '80%',
+    marginLeft: '70%',
     justifyContent: 'center',
     alignItems: 'center',
   }

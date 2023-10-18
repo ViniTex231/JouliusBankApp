@@ -5,13 +5,18 @@ import InputForm from "../../components/InputForm";
 import Button from "../../components/Button";
 import { AntDesign } from "@expo/vector-icons";
 
-export default function SignIn() {
+export default function SignIn({ navigation }) {
 	return (
 		<View style={styles.container}>
 			<View style={styles.containerLogin}>
 				<View>
-					<TouchableOpacity>
-						<AntDesign name="arrowleft" size={30} color={"#fff"} style={styles.icon} />
+					<TouchableOpacity onPress={() => navigation.navigate('Welcome')}>
+						<AntDesign
+							name="arrowleft"
+							size={30}
+							color={"#fff"}
+							style={styles.icon}
+						/>
 					</TouchableOpacity>
 				</View>
 				<View style={styles.containerImage}>
@@ -30,9 +35,9 @@ export default function SignIn() {
 			<View style={styles.containerForm}>
 				<InputForm label="E-mail ou CPF" placeholder="fulanodetal@gmail.com" />
 				<InputForm label="Senha" placeholder="******" />
-				<View style={styles.button}>
+				<TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main')}>
 					<Button label="Login" />
-				</View>
+				</TouchableOpacity>
 			</View>
 		</View>
 	);

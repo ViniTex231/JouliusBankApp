@@ -1,4 +1,6 @@
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import "react-native-gesture-handler";
 import Welcome from "../pages/Welcome";
 import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
@@ -7,8 +9,9 @@ import SignUpPJ from "../pages/SignUpPJ";
 import Card from "../pages/Card";
 import Extract from "../pages/Extract";
 import Pix from "../pages/Pix";
+import Loan from "../pages/Loan";
 
-const Stack = createNativeStackNavigator();
+const Stack = createStackNavigator();
 
 export default function Routes() {
 	return (
@@ -37,11 +40,11 @@ export default function Routes() {
 				options={{ headerShown: false }}
 			/> */}
 
-			{/* <Stack.Screen
+			<Stack.Screen
 				name="Main"
 				component={Main}
 				options={{ headerShown: false }}
-			/> */}
+			/>
 
 			{/* <Stack.Screen
 				name="Card"
@@ -60,7 +63,12 @@ export default function Routes() {
 				component={Pix}
 				options={{ headerShown: false }}
 			/>
-			
+
+			<Stack.Screen
+				name="Loan"
+				component={Loan}
+				options={{ headerShown: false }}
+			/>
 		</Stack.Navigator>
 	);
 }
