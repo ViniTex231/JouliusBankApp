@@ -10,7 +10,7 @@ export default function SignIn({ navigation }) {
 		<View style={styles.container}>
 			<View style={styles.containerLogin}>
 				<View>
-					<TouchableOpacity onPress={() => navigation.navigate('Welcome')}>
+					<TouchableOpacity onPress={() => navigation.navigate("Welcome")}>
 						<AntDesign
 							name="arrowleft"
 							size={30}
@@ -35,9 +35,14 @@ export default function SignIn({ navigation }) {
 			<View style={styles.containerForm}>
 				<InputForm label="E-mail ou CPF" placeholder="fulanodetal@gmail.com" />
 				<InputForm label="Senha" placeholder="******" />
-				<TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main')}>
-					<Button label="Login" />
-				</TouchableOpacity>
+				<View style={styles.buttonView}>
+					<TouchableOpacity
+						style={styles.buttonLogin}
+						onPress={() => navigation.navigate("Main")}
+					>
+						<Text style={styles.buttonTextLogin}>Login</Text>
+					</TouchableOpacity>
+				</View>
 			</View>
 		</View>
 	);

@@ -50,15 +50,6 @@ const styles = StyleSheet.create({
 		// paddingStart: '5%',
 		opacity: 0.5,
 	},
-	button: {
-		// flex: 1,
-		justifyContent: "center",
-		alignItems: "center",
-		position: "absolute",
-		bottom: 50,
-		left: 0,
-		right: 0,
-	},
 	buttonLogin: {
 		backgroundColor: COLORS.primaryPurple,
 		borderRadius: 10,
@@ -66,6 +57,10 @@ const styles = StyleSheet.create({
 		justifyContent: "center",
 		alignItems: "center",
 		width: 200,
+	},
+	buttonView:{
+		justifyContent: 'center',
+		alignItems: 'center',
 	},
 	buttonTextLogin: {
 		color: "#fff",

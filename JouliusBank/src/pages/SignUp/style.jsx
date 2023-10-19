@@ -47,14 +47,6 @@ const styles = StyleSheet.create({
   input:{
     opacity: 0.5,
   },
-  button:{
-    justifyContent: 'center',
-    alignItems: 'center',
-    position: 'absolute',
-    bottom: 50,
-    left: 0,
-    right: 0,
-  },
   buttonLogin:{
     backgroundColor: COLORS.primaryPurple,
     borderRadius: 10,
@@ -63,7 +55,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: 200,
   },
+  buttonView:{
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   buttonTextSignUp:{
+    color: "#fff",
+  },
+  buttonText:{
     color: "#fff",
   },
   icon:{

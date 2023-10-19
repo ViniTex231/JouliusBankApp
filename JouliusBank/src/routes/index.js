@@ -16,29 +16,29 @@ const Stack = createStackNavigator();
 export default function Routes() {
 	return (
 		<Stack.Navigator>
-			{/* <Stack.Screen
+			<Stack.Screen
 				name="Welcome"
 				component={Welcome}
 				options={{ headerShown: false }}
-			/> */}
+			/>
 
-			{/* <Stack.Screen
+			<Stack.Screen
 				name="SignIn"
 				component={SignIn}
 				options={{ headerShown: false }}
-			/> */}
+			/>
 
-			{/* <Stack.Screen
+			<Stack.Screen
 				name="SignUp"
 				component={SignUp}
 				options={{ headerShown: false }}
-			/> */}
+			/>
 
-			{/* <Stack.Screen
+			<Stack.Screen
 				name="SignUpPJ"
 				component={SignUpPJ}
 				options={{ headerShown: false }}
-			/> */}
+			/>
 
 			<Stack.Screen
 				name="Main"
@@ -46,17 +46,17 @@ export default function Routes() {
 				options={{ headerShown: false }}
 			/>
 
-			{/* <Stack.Screen
+			<Stack.Screen
 				name="Card"
 				component={Card}
 				options={{ headerShown: false }}
-			/> */}
+			/>
 
-			{/* <Stack.Screen
+			<Stack.Screen
 				name="Extract"
 				component={Extract}
 				options={{ headerShown: false }}
-			/> */}
+			/>
 
 			<Stack.Screen
 				name="Pix"
