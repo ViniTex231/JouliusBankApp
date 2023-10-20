@@ -4,19 +4,21 @@ import styles from "./style";
 import Button from "../../components/Button";
 import { FontAwesome } from "@expo/vector-icons";
 
-export default function Card() {
+export default function Card( {navigation} ) {
 	return (
 		<View style={styles.container}>
 			<View style={styles.header}>
 				<View>
-					<FontAwesome
-						name="arrow-left"
-						size={30}
-						color={"#000"}
-						style={styles.icon}
-					/>
+					<TouchableOpacity onPress={() => navigation.navigate('Main')}>
+						<FontAwesome
+							name="arrow-left"
+							size={30}
+							color={"#000"}
+							style={styles.icon}
+						/>
+					</TouchableOpacity>
 				</View>
-				<View style={{width: "40%"}}>
+				<View style={{ width: "40%" }}>
 					<Image
 						source={require("../../assets/iconeLogo.png")}
 						style={{ width: "100%" }}
@@ -57,9 +59,23 @@ export default function Card() {
 				</View>
 			</View>
 
+			<View style={styles.limitHeader}>
+				<Text style={styles.textCard}>Limite</Text>
+				<View style={styles.cardDetails}>
+					<Text>Limite total</Text>
+					<Text>R$ 5000</Text>
+				</View>
+
+				<View style={styles.cardDetails}>
+					<Text>Limite utilizado</Text>
+					<Text>R$ 2136</Text>
+				</View>
+			</View>
+
 			<View style={styles.button}>
 				<Button label="Bloquear" />
 			</View>
+
 		</View>
 	);
 }

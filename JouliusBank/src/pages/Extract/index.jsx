@@ -1,7 +1,7 @@
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import styles from "./style";
-import Activity from "../../components/Activity";
+import ActivityExtract from "../../components/ActivityExtract";
 import { AntDesign } from "@expo/vector-icons";
 
 export default function Extract({ navigation }) {
@@ -34,42 +34,42 @@ export default function Extract({ navigation }) {
 			<View style={styles.activitiesForm}>
 				<Text style={styles.activitiesText}>Sua atividade</Text>
 
-				<Activity
+				<ActivityExtract
 					name="Compra em Fazendinha"
 					date="22/07 - 23:50"
 					value="R$ 325,15"
 				/>
-				<Activity
+				<ActivityExtract
 					name="Compra em Fazendinha"
 					date="22/07 - 23:50"
 					value="R$ 325,15"
 				/>
-				<Activity
+				<ActivityExtract
 					name="Compra em Fazendinha"
 					date="22/07 - 23:50"
 					value="R$ 325,15"
 				/>
-				<Activity
+				<ActivityExtract
 					name="Compra em Fazendinha"
 					date="22/07 - 23:50"
 					value="R$ 325,15"
 				/>
-				<Activity
+				<ActivityExtract
 					name="Compra em Fazendinha"
 					date="22/07 - 23:50"
 					value="R$ 325,15"
 				/>
-				<Activity
+				<ActivityExtract
 					name="Compra em Fazendinha"
 					date="22/07 - 23:50"
 					value="R$ 325,15"
 				/>
-				<Activity
+				<ActivityExtract
 					name="Compra em Fazendinha"
 					date="22/07 - 23:50"
 					value="R$ 325,15"
 				/>
-				<Activity
+				<ActivityExtract
 					name="Compra em Fazendinha"
 					date="22/07 - 23:50"
 					value="R$ 325,15"

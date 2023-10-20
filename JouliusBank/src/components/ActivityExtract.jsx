@@ -1,15 +1,15 @@
 import { View, Text } from "react-native";
-import styles from "../pages/Main/style";
+import styles from "../pages/Extract/style";
 import { FontAwesome } from "@expo/vector-icons";
 
-export default function Activity(props) {
+export default function ActivityExtract(props) {
 	return (
 		<View style={styles.activity}>
 			<View style={{ gap: 10, display: "flex", flexDirection: "row" }}>
 				<FontAwesome
 					name="credit-card"
 					size={30}
-					color={"#fff"}
+					color={"#000"}
 					style={styles.icon}
 				/>
 				<View style={styles.activityTest}>

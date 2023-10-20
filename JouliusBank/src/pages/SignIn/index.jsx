@@ -2,7 +2,6 @@ import { View, Text, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import styles from "../SignIn/style";
 import InputForm from "../../components/InputForm";
-import Button from "../../components/Button";
 import { AntDesign } from "@expo/vector-icons";
 
 export default function SignIn({ navigation }) {
@@ -33,7 +32,7 @@ export default function SignIn({ navigation }) {
 			</View>
 
 			<View style={styles.containerForm}>
-				<InputForm label="E-mail ou CPF" placeholder="fulanodetal@gmail.com" />
+				<InputForm label="CPF ou CNPJ" placeholder="fulanodetal@gmail.com" />
 				<InputForm label="Senha" placeholder="******" />
 				<View style={styles.buttonView}>
 					<TouchableOpacity

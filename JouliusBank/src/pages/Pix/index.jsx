@@ -9,7 +9,7 @@ export default function Pix({ navigation }) {
 		<View style={styles.container}>
 			<View style={styles.header}>
 				<View>
-					<TouchableOpacity onPress={() => navigation.navigate('Main')}>
+					<TouchableOpacity onPress={() => navigation.navigate("Main")}>
 						<FontAwesome
 							name="arrow-left"
 							size={30}
@@ -42,16 +42,16 @@ export default function Pix({ navigation }) {
 				<InputForm label="Descrição" placeholder="Opcional" />
 			</View>
 
-			<View style={styles.button}>
-				<TouchableOpacity onPress={() => navigation.navigate('Main')}>
+			<TouchableOpacity onPress={() => navigation.navigate("Main")}>
+				<View style={styles.button}>
 					<FontAwesome
 						name="check"
 						size={40}
 						color={"#fff"}
 						style={styles.icon}
 					/>
-				</TouchableOpacity>
-			</View>
+				</View>
+			</TouchableOpacity>
 		</View>
 	);
 }

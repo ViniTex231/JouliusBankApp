@@ -25,9 +25,7 @@ export default function Main({ navigation }) {
 					<Text style={styles.textSaldo}>Saldo</Text>
 					<Text style={styles.textBalance}>R$ 10.000,00</Text>
 					<View style={styles.boxOptions}>
-						<TouchableOpacity
-						onPress={() => navigation.navigate('Extract')}
-						>
+						<TouchableOpacity onPress={() => navigation.navigate("Extract")}>
 							<Text style={styles.textOptions}>Ver Extrato</Text>
 						</TouchableOpacity>
 						<TouchableOpacity>
@@ -38,32 +36,40 @@ export default function Main({ navigation }) {
 			</View>
 
 			<View style={styles.menuButtons}>
-				<TouchableOpacity onPress={() => navigation.navigate('Pix')}>
+				<TouchableOpacity onPress={() => navigation.navigate("Pix")}>
 					<MenuButton icon="" label="Pix" />
 				</TouchableOpacity>
-				<MenuButton icon="" label="Empréstimos" />
-				<MenuButton icon="" label="Pagamentos" />
-				<MenuButton icon="" label="Cartões" />
+				<TouchableOpacity onPress={() => navigation.navigate("Loan")}>
+					<MenuButton icon="" label="Empréstimos" />
+				</TouchableOpacity>
+				<TouchableOpacity>
+					<MenuButton icon="" label="Pagamentos" />
+				</TouchableOpacity>
+				<TouchableOpacity onPress={() => navigation.navigate("Card")}>
+					<MenuButton icon="" label="Cartões" />
+				</TouchableOpacity>
 			</View>
 
-			<View style={styles.activitiesForm}>
-				<Text style={styles.activitiesText}>Sua atividade</Text>
+			<View style={styles.containerActivities}>
+				<View style={styles.activitiesForm}>
+					<Text style={styles.activitiesText}>Sua atividade</Text>
 
-				<Activity
-					name="Compra em Fazendinha"
-					date="22/07 - 23:50"
-					value="R$ 325,15"
-				/>
-				<Activity
-					name="Compra em Fazendinha"
-					date="22/07 - 23:50"
-					value="R$ 325,15"
-				/>
-				<Activity
-					name="Compra em Fazendinha"
-					date="22/07 - 23:50"
-					value="R$ 325,15"
-				/>
+					<Activity
+						name="Compra em Fazendinha"
+						date="22/07 - 23:50"
+						value="R$ 325,15"
+					/>
+					<Activity
+						name="Compra em Fazendinha"
+						date="22/07 - 23:50"
+						value="R$ 325,15"
+					/>
+					<Activity
+						name="Compra em Fazendinha"
+						date="22/07 - 23:50"
+						value="R$ 325,15"
+					/>
+				</View>
 			</View>
 		</View>
 	);

@@ -33,6 +33,12 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
   },
+  limitHeader:{
+    paddingTop: "5%",
+    paddingStart: "5%",
+    display: 'flex',
+    flexDirection: 'column',
+  },
   textCard:{
     borderBottomColor: COLORS.borderPurple,
     borderBottomWidth: 2,

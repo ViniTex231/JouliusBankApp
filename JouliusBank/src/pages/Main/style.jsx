@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
         borderBottomColor: COLORS.borderPurple,
         borderBottomWidth: 2,
         width: "30%",
-        color: "#a1a1a1",
+        color: "#fff",
     },
     activity:{
         paddingTop: "5%",
@@ -100,16 +100,17 @@ const styles = StyleSheet.create({
         fontSize: 14,
         overflow: 'hidden',
         width: '100%',
-
-
+        color: '#fff',
     },
     data:{
         fontSize: 14,
+        color: '#fff',
     },
     price:{
         fontSize: 16,
         alignItems: 'center',
         justifyContent: 'center',
+        color: '#fff',
     },
     imageMan: {
         width: 70,
@@ -120,6 +121,14 @@ const styles = StyleSheet.create({
     activityTest: {
         width: 250,
         
+    },
+    containerActivities:{
+        backgroundColor: COLORS.primaryPurple,
+        width: '100%',
+        height: '100%',
+        borderTopLeftRadius: 25,
+        borderTopRightRadius: 25,
+        marginTop: '10%',
     }
 })
 
