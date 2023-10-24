@@ -32,7 +32,7 @@ export default function SignIn({ navigation }) {
 			</View>
 
 			<View style={styles.containerForm}>
-				<InputForm label="CPF ou CNPJ" placeholder="fulanodetal@gmail.com" />
+				<InputForm label="CPF ou CNPJ" placeholder="123.456.789-10" />
 				<InputForm label="Senha" placeholder="******" />
 				<View style={styles.buttonView}>
 					<TouchableOpacity

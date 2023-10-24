@@ -33,8 +33,8 @@ export default function SignUp({ navigation }) {
 			</View>
 
 			<View style={styles.containerForm}>
-				<InputForm label="Nome" placeholder="Julius" />
-				<InputForm label="Sobrenome" placeholder="Rock" />
+				<InputForm label="Nome Completo" placeholder="Julius Rock" />
+				<InputForm label="Nome Social" placeholder="Jennifer Rock" />
 				<InputForm label="Data de Nascimento" placeholder="11/10/2023" />
 				<InputForm label="CPF" placeholder="***.***.***-**" />
 				<InputForm label="Email" placeholder="fulanodetal@gmail.com" />
