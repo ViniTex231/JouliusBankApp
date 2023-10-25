@@ -33,20 +33,23 @@ export default function SignUp({ navigation }) {
 			</View>
 
 			<View style={styles.containerForm}>
-				<InputForm label="Nome Completo" placeholder="Julius Rock" />
-				<InputForm label="Nome Social" placeholder="Jennifer Rock" />
-				<InputForm label="Data de Nascimento" placeholder="11/10/2023" />
-				<InputForm label="CPF" placeholder="***.***.***-**" />
-				<InputForm label="Email" placeholder="fulanodetal@gmail.com" />
-				<InputForm label="Senha" placeholder="******" />
-				<View style={styles.buttonView}>
-					<TouchableOpacity
-						style={styles.buttonLogin}
-						onPress={() => navigation.navigate("SignIn")}
-					>
-						<Text style={styles.buttonText}>Abra sua Conta</Text>
-					</TouchableOpacity>
-				</View>
+				<ScrollView>
+					<InputForm label="Nome Completo" placeholder="Julius Rock" />
+					<InputForm label="Nome Social" placeholder="Jennifer Rock" />
+					<InputForm label="Data de Nascimento" placeholder="11/10/2023" />
+					<InputForm label="CPF" placeholder="***.***.***-**" />
+					<InputForm label="RG" placeholder="**.***.***-*" />
+					<InputForm label="Email" placeholder="fulanodetal@gmail.com" />
+					<InputForm label="Senha" placeholder="******" />
+					<View style={styles.buttonView}>
+						<TouchableOpacity
+							style={styles.buttonLogin}
+							onPress={() => navigation.navigate("SignIn")}
+						>
+							<Text style={styles.buttonText}>Abra sua Conta</Text>
+						</TouchableOpacity>
+					</View>
+				</ScrollView>
 			</View>
 		</View>
 	);

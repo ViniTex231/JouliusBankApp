@@ -56,6 +56,8 @@ const styles = StyleSheet.create({
     width: 200,
   },
   buttonView:{
+    marginTop: 20,
+    marginBottom: 20,
     justifyContent: 'center',
     alignItems: 'center',
   },
