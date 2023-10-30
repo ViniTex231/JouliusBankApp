@@ -1,10 +1,25 @@
 import { View, Text, Image, TouchableOpacity } from "react-native";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./style";
 import MenuButton from "../../components/MenuButton";
 import Activity from "../../components/Activity";
+import axios from 'axios'
 
 export default function Main({ navigation }) {
+	
+	const [balance, setBalance] = useState(0)
+	const [user_id, setUser_id] = useState(1)
+
+	useEffect(()=>{
+		axios.get(`http://127.0.0.1:8000/api/v1/contas/${user_id}/`)
+		.then((res)=>{
+			setBalance(res.data.saldo)
+		}).catch((erro)=>{
+			console.log(erro.response.statusText)
+		})
+	}, [])
+
+
 	return (
 		<View style={styles.container}>
 			<View style={styles.header}>
@@ -23,7 +38,7 @@ export default function Main({ navigation }) {
 			<View style={styles.boxBalance}>
 				<View style={styles.balance}>
 					<Text style={styles.textSaldo}>Saldo</Text>
-					<Text style={styles.textBalance}>R$ 10.000,00</Text>
+					<Text style={styles.textBalance}>R$ {balance}</Text>
 					<View style={styles.boxOptions}>
 						<TouchableOpacity onPress={() => navigation.navigate("Extract")}>
 							<Text style={styles.textOptions}>Ver Extrato</Text>
