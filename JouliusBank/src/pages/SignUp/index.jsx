@@ -1,11 +1,39 @@
 import { View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import styles from "../SignUp/style";
 import InputForm from "../../components/InputForm";
 import Button from "../../components/Button";
 import { AntDesign } from "@expo/vector-icons";
 
 export default function SignUp({ navigation }) {
+	const [nome, setNome] = useState('')
+	const [social, setSocial] = useState('')
+	const [nascimento, setNascimento] = useState('')
+	const [cpf, setcpf] = useState(0)
+	const [rg, setRg] = useState(0)
+	const [email, setEmail] = useState('')
+	const [senha, setSenha] = useState(0)
+
+	const submit = ()=> {
+		axios.post('http://127.0.0.1:8000/api/v1/clientes/',
+		{
+			nome_razao_social: nome,
+			nome_social_fantasia: social,
+			data_nascimento_abertura: nascimento,
+			usuario: email,
+			senha: senha
+		}
+		).then((res)=>{
+			setNome('')
+			setSocial('')
+			setNascimento('')
+			setEmail('')
+			setSenha('')
+		}).catch((erro)=>{
+			console.log(erro)
+		})
+	}
+
 	return (
 		<View style={styles.container}>
 			<View style={styles.containerSignUp}>

@@ -9,6 +9,9 @@ export default function Main({ navigation }) {
 	
 	const [balance, setBalance] = useState(0)
 	const [user_id, setUser_id] = useState(1)
+	const [name, setName] = useState('')
+	const [date, setDate] = useState('')
+	const [value, setValue] = useState(0)
 
 	useEffect(()=>{
 		axios.get(`http://127.0.0.1:8000/api/v1/contas/${user_id}/`)
@@ -17,7 +20,26 @@ export default function Main({ navigation }) {
 		}).catch((erro)=>{
 			console.log(erro.response.statusText)
 		})
+		axios.get(`http://127.0.0.1:8000/api/v1/movimentacoes/1/`)
+		.then((res)=>{
+			setName(res.data.operacao)
+			setDate(res.data.data_hora)
+			setValue(res.data.valor)
+		}).catch((erro)=>{
+			console.log(erro.response.statusText)
+		})
 	}, [])
+
+	// useEffect(()=>{
+	// 	axios.get(`http://127.0.0.1:8000/api/v1/movimentacoes/1/`)
+	// 	.then((res)=>{
+	// 		setName(res.data.operacao)
+	// 		setDate(res.data.data_hora)
+	// 		setValue(res.data.valor)
+	// 	}).catch((erro)=>{
+	// 		console.log(erro.response.statusText)
+	// 	})
+	// }, [])
 
 
 	return (
@@ -70,9 +92,9 @@ export default function Main({ navigation }) {
 					<Text style={styles.activitiesText}>Sua atividade</Text>
 
 					<Activity
-						name="Compra em Fazendinha"
-						date="22/07 - 23:50"
-						value="R$ 325,15"
+						name={name}
+						date={date}
+						value={value}
 					/>
 					<Activity
 						name="Compra em Fazendinha"
