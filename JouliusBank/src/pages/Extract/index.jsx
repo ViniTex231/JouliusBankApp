@@ -1,10 +1,27 @@
 import { View, Text, Image, TouchableOpacity } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./style";
 import ActivityExtract from "../../components/ActivityExtract";
 import { AntDesign } from "@expo/vector-icons";
+import axios from "axios";
 
 export default function Extract({ navigation }) {
+
+	const [mov_id, setMov_id] = useState(1)
+	const [name, setName] = useState('')
+	const [date, setDate] = useState('')
+	const [value, setValue] = useState(0)
+	const [movements, setMovements] = useState([]) 
+
+	useEffect(()=>{
+		axios.get(`http://10.109.71.15:8000/api/v1/movimentacoes/`)
+		.then((res)=>{
+			setMovements(res.data)
+		}).catch((erro)=>{
+			console.log(erro)
+		})
+	}, [])
+
 	return (
 		<View style={styles.container}>
 			<View style={styles.containerExtract}>
@@ -34,46 +51,15 @@ export default function Extract({ navigation }) {
 			<View style={styles.activitiesForm}>
 				<Text style={styles.activitiesText}>Sua atividade</Text>
 
+				{movements.map((movement)=> (
+
 				<ActivityExtract
-					name="Compra em Fazendinha"
-					date="22/07 - 23:50"
-					value="R$ 325,15"
+					key={movement.id}
+					name={movement.operacao}
+					date={movement.data_hora}
+					value={"R$ " + movement.valor}
 				/>
-				<ActivityExtract
-					name="Compra em Fazendinha"
-					date="22/07 - 23:50"
-					value="R$ 325,15"
-				/>
-				<ActivityExtract
-					name="Compra em Fazendinha"
-					date="22/07 - 23:50"
-					value="R$ 325,15"
-				/>
-				<ActivityExtract
-					name="Compra em Fazendinha"
-					date="22/07 - 23:50"
-					value="R$ 325,15"
-				/>
-				<ActivityExtract
-					name="Compra em Fazendinha"
-					date="22/07 - 23:50"
-					value="R$ 325,15"
-				/>
-				<ActivityExtract
-					name="Compra em Fazendinha"
-					date="22/07 - 23:50"
-					value="R$ 325,15"
-				/>
-				<ActivityExtract
-					name="Compra em Fazendinha"
-					date="22/07 - 23:50"
-					value="R$ 325,15"
-				/>
-				<ActivityExtract
-					name="Compra em Fazendinha"
-					date="22/07 - 23:50"
-					value="R$ 325,15"
-				/>
+				))}
 			</View>
 		</View>
 	);

@@ -3,6 +3,7 @@ import React from "react";
 import styles from "./style";
 import Button from "../../components/Button";
 import { FontAwesome } from "@expo/vector-icons";
+import axios from "axios";
 
 export default function Card( {navigation} ) {
 	return (

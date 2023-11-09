@@ -12,23 +12,22 @@ export default function Main({ navigation }) {
 	const [name, setName] = useState('')
 	const [date, setDate] = useState('')
 	const [value, setValue] = useState(0)
+	const [movements, setMovements] = useState([])
 
 	useEffect(()=>{
-		axios.get(`http://127.0.0.1:8000/api/v1/contas/${user_id}/`)
+		axios.get(`http://10.109.71.15:8000/api/v1/contas/${user_id}/`)
 		.then((res)=>{
 			setBalance(res.data.saldo)
 		}).catch((erro)=>{
-			console.log(erro.response.statusText)
+			console.log(erro)
 		})
-		axios.get(`http://127.0.0.1:8000/api/v1/movimentacoes/1/`)
+		axios.get(`http://10.109.71.15:8000/api/v1/movimentacoes/`)
 		.then((res)=>{
-			setName(res.data.operacao)
-			setDate(res.data.data_hora)
-			setValue(res.data.valor)
+			setMovements(res.data)
 		}).catch((erro)=>{
-			console.log(erro.response.statusText)
+			console.log(erro)
 		})
-	}, [])
+	}, [user_id])
 
 	// useEffect(()=>{
 	// 	axios.get(`http://127.0.0.1:8000/api/v1/movimentacoes/1/`)
@@ -91,21 +90,14 @@ export default function Main({ navigation }) {
 				<View style={styles.activitiesForm}>
 					<Text style={styles.activitiesText}>Sua atividade</Text>
 
-					<Activity
-						name={name}
-						date={date}
-						value={value}
-					/>
-					<Activity
-						name="Compra em Fazendinha"
-						date="22/07 - 23:50"
-						value="R$ 325,15"
-					/>
-					<Activity
-						name="Compra em Fazendinha"
-						date="22/07 - 23:50"
-						value="R$ 325,15"
-					/>
+					{movements.map((movement)=>(
+						<Activity
+							key={movement.id}
+							name={movement.operacao}
+							date={movement.data_hora}
+							value={"R$ "+movement.valor}
+						/>
+					))}
 				</View>
 			</View>
 		</View>
