@@ -9,9 +9,6 @@ export default function Main({ navigation }) {
 	
 	const [balance, setBalance] = useState(0)
 	const [user_id, setUser_id] = useState(1)
-	const [name, setName] = useState('')
-	const [date, setDate] = useState('')
-	const [value, setValue] = useState(0)
 	const [movements, setMovements] = useState([])
 
 	useEffect(()=>{
@@ -93,7 +90,7 @@ export default function Main({ navigation }) {
 					{movements.map((movement)=>(
 						<Activity
 							key={movement.id}
-							name={movement.operacao}
+							name={movement.descricao + movement.operacao}
 							date={movement.data_hora}
 							value={"R$ "+movement.valor}
 						/>
