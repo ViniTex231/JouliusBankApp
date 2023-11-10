@@ -90,7 +90,7 @@ export default function Main({ navigation }) {
 					{movements.map((movement)=>(
 						<Activity
 							key={movement.id}
-							name={movement.descricao + movement.operacao}
+							name={movement.operacao + " - " + movement.descricao}
 							date={movement.data_hora}
 							value={"R$ "+movement.valor}
 						/>
