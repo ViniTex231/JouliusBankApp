@@ -10,13 +10,14 @@ import Card from "../pages/Card";
 import Extract from "../pages/Extract";
 import Pix from "../pages/Pix";
 import Loan from "../pages/Loan";
+import Profile from "../pages/Profile";
 
 const Stack = createStackNavigator();
 
 export default function Routes() {
 	return (
 		<Stack.Navigator>
-			<Stack.Screen
+			{/* <Stack.Screen
 				name="Welcome"
 				component={Welcome}
 				options={{ headerShown: false }}
@@ -67,6 +68,12 @@ export default function Routes() {
 			<Stack.Screen
 				name="Loan"
 				component={Loan}
+				options={{ headerShown: false }}
+			/> */}
+
+			<Stack.Screen
+				name="Profile"
+				component={Profile}
 				options={{ headerShown: false }}
 			/>
 		</Stack.Navigator>
