@@ -1,10 +1,31 @@
-import { View, Text, Image, TouchableOpacity } from "react-native";
-import React from "react";
+import { View, Text, Image, TouchableOpacity, TextInput } from "react-native";
+import React, { useState } from "react";
 import styles from "../SignIn/style";
 import InputForm from "../../components/InputForm";
 import { AntDesign } from "@expo/vector-icons";
+import axios from "axios";
 
 export default function SignIn({ navigation }) {
+
+	const [cpf, setCpf] = useState(0)
+	const [senha, setSenha] = useState('')
+
+	
+	const submit = () => {
+		axios.post('http://192.168.100.51:8000/api/v1/auth/jwt/create/',
+		{
+			registro: cpf,
+			password: senha
+		}).then((res)=>{
+			console.log(res.status)
+			if (res.status === 200){
+				navigation.navigate("Main")
+			}
+		}).catch((erro)=>{
+			console.log(erro)
+		})
+	}
+
 	return (
 		<View style={styles.container}>
 			<View style={styles.containerLogin}>
@@ -32,12 +53,12 @@ export default function SignIn({ navigation }) {
 			</View>
 
 			<View style={styles.containerForm}>
-				<InputForm label="CPF ou CNPJ" placeholder="123.456.789-10" />
-				<InputForm label="Senha" placeholder="******" />
+				<TextInput label="CPF ou CNPJ" placeholder="123.456.789-10" onChangeText={(value) => setCpf(value)}/>
+				<TextInput label="Senha" placeholder="******" onChangeText={(value) => setSenha(value)}/>
 				<View style={styles.buttonView}>
 					<TouchableOpacity
 						style={styles.buttonLogin}
-						onPress={() => navigation.navigate("Main")}
+						onPress={() => submit()}
 					>
 						<Text style={styles.buttonTextLogin}>Login</Text>
 					</TouchableOpacity>
