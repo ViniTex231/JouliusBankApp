@@ -1,29 +1,33 @@
-import { View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
+import { View, Text, Image, ScrollView, TouchableOpacity, TextInput } from "react-native";
 import React, { useState } from "react";
 import styles from "../SignUp/style";
 import InputForm from "../../components/InputForm";
 import Button from "../../components/Button";
 import { AntDesign } from "@expo/vector-icons";
+import axios from "axios";
 
 export default function SignUp({ navigation }) {
 	const [nome, setNome] = useState('')
 	const [social, setSocial] = useState('')
 	const [nascimento, setNascimento] = useState('')
 	const [cpf, setcpf] = useState(0)
-	const [rg, setRg] = useState(0)
+	const [rg, setRg] = useState('')
 	const [email, setEmail] = useState('')
-	const [senha, setSenha] = useState(0)
+	const [senha, setSenha] = useState('')
 
 	const submit = ()=> {
-		axios.post('http://127.0.0.1:8000/api/v1/clientes/',
+		axios.post('http://192.168.100.51:8000/api/v1/auth/users/',
 		{
+			registro: parseInt(cpf),
 			nome_razao_social: nome,
 			nome_social_fantasia: social,
+			foto_logo: "a",
 			data_nascimento_abertura: nascimento,
-			usuario: email,
-			senha: senha
+			password: senha
 		}
 		).then((res)=>{
+			console.log(res)
+			navigation.navigate("SignIn")
 			setNome('')
 			setSocial('')
 			setNascimento('')
@@ -62,17 +66,18 @@ export default function SignUp({ navigation }) {
 
 			<View style={styles.containerForm}>
 				<ScrollView>
-					<InputForm label="Nome Completo" placeholder="Julius Rock" />
-					<InputForm label="Nome Social" placeholder="Jennifer Rock" />
-					<InputForm label="Data de Nascimento" placeholder="11/10/2023" />
-					<InputForm label="CPF" placeholder="***.***.***-**" />
-					<InputForm label="RG" placeholder="**.***.***-*" />
-					<InputForm label="Email" placeholder="fulanodetal@gmail.com" />
-					<InputForm label="Senha" placeholder="******" />
+					<TextInput label="Nome Completo" placeholder="Julius Rock" onChangeText={(value) => setNome(value)}/>
+					<TextInput label="Nome Social" placeholder="Jennifer Rock" onChangeText={(value) => setSocial(value)}/>
+					<TextInput label="Data de Nascimento" placeholder="11/10/2023" onChangeText={(value) => setNascimento(value)}/>
+					<TextInput label="CPF" placeholder="***.***.***-**" onChangeText={(value) => setcpf(value)} keyboardType="number-pad"/>
+					<TextInput label="RG" placeholder="**.***.***-*" onChangeText={(value) => setRg(value)} keyboardType="number-pad"/>
+					<TextInput label="Email" placeholder="fulanodetal@gmail.com" onChangeText={(value) => setEmail(value)}/>
+					<TextInput label="Senha" placeholder="******" onChangeText={(value) => setSenha(value)}/>
 					<View style={styles.buttonView}>
 						<TouchableOpacity
 							style={styles.buttonLogin}
-							onPress={() => navigation.navigate("SignIn")}
+							onPress={() => submit()}
+							// onPress={() => {console.log(typeof(nome), typeof(social), typeof(nascimento), typeof(cpf), typeof(rg), typeof(email), typeof(senha))}}
 						>
 							<Text style={styles.buttonText}>Abra sua Conta</Text>
 						</TouchableOpacity>

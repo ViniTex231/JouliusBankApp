@@ -17,7 +17,7 @@ const Stack = createStackNavigator();
 export default function Routes() {
 	return (
 		<Stack.Navigator>
-			{/* <Stack.Screen
+			<Stack.Screen
 				name="Welcome"
 				component={Welcome}
 				options={{ headerShown: false }}
@@ -69,13 +69,13 @@ export default function Routes() {
 				name="Loan"
 				component={Loan}
 				options={{ headerShown: false }}
-			/> */}
+			/>
 
-			<Stack.Screen
+			{/* <Stack.Screen
 				name="Profile"
 				component={Profile}
 				options={{ headerShown: false }}
-			/>
+			/> */}
 		</Stack.Navigator>
 	);
 }
