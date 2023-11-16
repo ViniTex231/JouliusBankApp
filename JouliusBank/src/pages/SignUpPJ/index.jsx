@@ -17,7 +17,7 @@ export default function SignUpPJ({ navigation }) {
 	const [senha, setSenha] = useState('')
 
 	const submit = () => {
-		axios.post('http://10.109.71.15:8000/api/v1/auth/users/',
+		axios.post('http://10.234.93.57:8000/api/v1/auth/users/',
 		{
 			registro: parseInt(cnpj),
 			nome_razao_social: nome,

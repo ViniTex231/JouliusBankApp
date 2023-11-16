@@ -14,10 +14,21 @@ export default function SignUp({ navigation }) {
 	const [email, setEmail] = useState('')
 	const [senha, setSenha] = useState('')
 
-	const submit = ()=> {
-		axios.post('http://10.109.71.15:8000/api/v1/auth/users/',
+	const fodase = () => {
+		axios.post('http://10.234.93.57:8000/api/v1/contas',
 		{
-			registro: parseInt(cpf),
+			cliente: cpf
+		}).then((res)=>{
+			console.log(res)
+		}).catch((erro)=>{
+			console.log(erro)
+		})
+	}
+
+	const submit = ()=> {
+		axios.post('http://10.234.93.57:8000/api/v1/auth/users/',
+		{
+			registro: cpf,
 			nome_razao_social: nome,
 			nome_social_fantasia: social,
 			foto_logo: "a",
@@ -26,6 +37,7 @@ export default function SignUp({ navigation }) {
 		}
 		).then((res)=>{
 			console.log(res)
+			fodase()
 			navigation.navigate("SignIn")
 			setNome('')
 			setSocial('')
