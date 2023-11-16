@@ -65,13 +65,41 @@ export default function SignUp({ navigation }) {
 
 			<View style={styles.containerForm}>
 				<ScrollView>
-					<TextInput label="Nome Completo" placeholder="Julius Rock" onChangeText={(value) => setNome(value)}/>
-					<TextInput label="Nome Social" placeholder="Jennifer Rock" onChangeText={(value) => setSocial(value)}/>
-					<TextInput label="Data de Nascimento" placeholder="11/10/2023" onChangeText={(value) => setNascimento(value)}/>
-					<TextInput label="CPF" placeholder="***.***.***-**" onChangeText={(value) => setcpf(value)} keyboardType="number-pad"/>
-					<TextInput label="RG" placeholder="**.***.***-*" onChangeText={(value) => setRg(value)} keyboardType="number-pad"/>
-					<TextInput label="Email" placeholder="fulanodetal@gmail.com" onChangeText={(value) => setEmail(value)}/>
-					<TextInput label="Senha" placeholder="******" onChangeText={(value) => setSenha(value)}/>
+					<View style={styles.InputView}>
+						<Text style={styles.textDesc}>Nome Completo</Text>
+					</View>
+					<TextInput style={styles.input} placeholder="Julius Rock" onChangeText={(value) => setNome(value)}/>
+					
+					<View style={styles.InputView}>
+						<Text style={styles.textDesc}>Nome Social</Text>
+					</View >
+					<TextInput style={styles.input} placeholder="Jennifer Rock" onChangeText={(value) => setSocial(value)}/>
+
+					<View style={styles.InputView}>
+						<Text style={styles.textDesc}>Data de Nascimento</Text>
+					</View>
+					<TextInput style={styles.input} placeholder="11/10/2023" onChangeText={(value) => setNascimento(value)}/>
+
+					<View style={styles.InputView}>
+						<Text style={styles.textDesc}>CPF</Text>
+					</View>
+					<TextInput style={styles.input} placeholder="***.***.***-**" onChangeText={(value) => setcpf(value)} keyboardType="number-pad"/>
+
+					<View style={styles.InputView}>
+						<Text style={styles.textDesc}>RG</Text>
+					</View>
+					<TextInput style={styles.input} placeholder="**.***.***-*" onChangeText={(value) => setRg(value)} keyboardType="number-pad"/>
+
+					<View style={styles.InputView}>
+						<Text style={styles.textDesc}>Email</Text>
+					</View>
+					<TextInput style={styles.input} placeholder="fulanodetal@gmail.com" onChangeText={(value) => setEmail(value)}/>
+
+					<View style={styles.InputView}>
+						<Text style={styles.textDesc}>Senha</Text>
+					</View>
+					<TextInput style={styles.input} placeholder="******" onChangeText={(value) => setSenha(value)}/>
+
 					<View style={styles.buttonView}>
 						<TouchableOpacity
 							style={styles.buttonLogin}
