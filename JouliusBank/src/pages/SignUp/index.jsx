@@ -1,7 +1,6 @@
 import { View, Text, Image, ScrollView, TouchableOpacity, TextInput } from "react-native";
 import React, { useState } from "react";
 import styles from "../SignUp/style";
-import InputForm from "../../components/InputForm";
 import Button from "../../components/Button";
 import { AntDesign } from "@expo/vector-icons";
 import axios from "axios";
@@ -16,7 +15,7 @@ export default function SignUp({ navigation }) {
 	const [senha, setSenha] = useState('')
 
 	const submit = ()=> {
-		axios.post('http://192.168.100.51:8000/api/v1/auth/users/',
+		axios.post('http://10.109.71.15:8000/api/v1/auth/users/',
 		{
 			registro: parseInt(cpf),
 			nome_razao_social: nome,
@@ -77,7 +76,7 @@ export default function SignUp({ navigation }) {
 						<TouchableOpacity
 							style={styles.buttonLogin}
 							onPress={() => submit()}
-							// onPress={() => {console.log(typeof(nome), typeof(social), typeof(nascimento), typeof(cpf), typeof(rg), typeof(email), typeof(senha))}}
+							// onPress={() => {console.log(nome, social, nascimento, cpf, rg, email, senha)}}
 						>
 							<Text style={styles.buttonText}>Abra sua Conta</Text>
 						</TouchableOpacity>

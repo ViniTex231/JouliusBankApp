@@ -1,15 +1,44 @@
-import { View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
-import React from "react";
+import { View, Text, Image, ScrollView, TouchableOpacity, TextInput } from "react-native";
+import React, { useState } from "react";
 import styles from "../SignUpPJ/style";
-import InputForm from "../../components/InputForm";
 import Button from "../../components/Button";
 import { AntDesign } from "@expo/vector-icons";
+import axios from "axios";
 
 export default function SignUpPJ({ navigation }) {
+
+	const [nome, setNome] = useState('')
+	const [social, setSocial] = useState('')
+	const [abertura, setAbertura] = useState('')
+	const [cnpj, setCnpj] = useState(0)
+	const [inscEst, setInscEst] = useState('')
+	const [inscMun, setInscMun] = useState('')
+	const [email, setEmail] = useState('')
+	const [senha, setSenha] = useState('')
+
+	const submit = () => {
+		axios.post('http://10.109.71.15:8000/api/v1/auth/users/',
+		{
+			registro: parseInt(cnpj),
+			nome_razao_social: nome,
+			nome_social_fantasia: social,
+			foto_logo: "a",
+			data_nascimento_abertura: abertura,
+			password: senha
+		}).then((res)=>{
+			console.log(res)
+			navigation.navigate("SignIn")
+			setNome('')
+			setSocial('')
+			setAbertura('')
+			setEmail('')
+			setSenha('')
+		}).catch((erro)=>{
+			console.log(erro)
+		})
+	}
+
   return(
-
-
-		
 		<View style={styles.container}>
 				<View style={styles.containerSignUp}>
 					<View>
@@ -38,16 +67,48 @@ export default function SignUpPJ({ navigation }) {
 				
 					<View style={styles.containerForm}>
 						<ScrollView>
-							<InputForm label="Razão Social" placeholder="Joulius Bank LTDA" />
-							<InputForm label="Nome Fantasia" placeholder="Joulius Bank" />
-							<InputForm label="CNPJ" placeholder="**.***.***/0001-**" />
-							<InputForm label="Inscrição Estadual" placeholder="***.***.***.***" />
-							<InputForm label="Inscrição Municipal" placeholder="***.***.***.***" />
-							<InputForm label="Data de Abertura" placeholder="11/10/2023" />
-							<InputForm label="Email" placeholder="fulanodetal@gmail.com" />
-							<InputForm label="Senha" placeholder="******" />
-							<TouchableOpacity style={styles.button} onPress={() => navigation.navigate('SignIn')}>
-								<Button label="Abra sua Conta" />
+							<View style={styles.InputView}>
+								<Text style={styles.textDesc}>Razão Social</Text>
+							</View>
+							<TextInput style={styles.input} placeholder="Joulius Bank LTDA" onChangeText={(value) => setNome(value)} />
+
+							<View style={styles.InputView}>
+								<Text style={styles.textDesc}>Nome Fantasia</Text>
+							</View>
+							<TextInput style={styles.input} placeholder="Joulius Bank" onChangeText={(value) => setSocial(value)} />
+
+							<View style={styles.InputView}>
+								<Text style={styles.textDesc}>CNPJ</Text>
+							</View>
+							<TextInput style={styles.input} placeholder="**.***.***/0001-**" onChangeText={(value) => setCnpj(value)} />
+
+							<View style={styles.InputView}>
+								<Text style={styles.textDesc}>Inscrição Estadual</Text>
+							</View>
+							<TextInput style={styles.input} placeholder="***.***.***.***" onChangeText={(value) => setInscEst(value)} />
+
+							<View style={styles.InputView}>
+								<Text style={styles.textDesc}>Inscrição Municipal</Text>
+							</View>
+							<TextInput style={styles.input} placeholder="***.***.***.***" onChangeText={(value) => setInscMun(value)} />
+							
+							<View style={styles.InputView}>
+								<Text style={styles.textDesc}>Data de Abertura</Text>
+							</View>
+							<TextInput style={styles.input} placeholder="11/10/2023" onChangeText={(value) => setAbertura(value)} />
+
+							<View style={styles.InputView}>
+								<Text style={styles.textDesc}>Email</Text>
+							</View>
+							<TextInput style={styles.input} placeholder="fulanodetal@gmail.com" onChangeText={(value) => setEmail(value)} />
+
+							<View style={styles.InputView}>
+								<Text style={styles.textDesc}>Senha</Text>
+							</View>
+							<TextInput style={styles.input} placeholder="******" onChangeText={(value) => setSenha(value)} />
+
+							<TouchableOpacity style={styles.button} onPress={() => submit()}>
+								<Text style={styles.buttonText}>Abra sua Conta</Text>
 							</TouchableOpacity>
 						</ScrollView>
 						

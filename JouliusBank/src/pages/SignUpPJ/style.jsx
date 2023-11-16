@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     borderBottomColor: COLORS.borderPurple,
     borderBottomWidth: 2,
     width: "30%",
-    marginTop: "5%",
+    marginTop: "3%",
   },
   textDesc:{
     color: "#727272",
@@ -50,11 +50,17 @@ const styles = StyleSheet.create({
   button:{
     justifyContent: 'center',
     alignItems: 'center',
-    //position: 'absolute',
     marginTop: 20,
     marginBottom: 20,
     left: 0,
     right: 0,
+    backgroundColor: COLORS.primaryPurple,
+    borderRadius: 10,
+    paddingVertical: 8,
+    width: 200,
+  },
+  buttonText:{
+    color: "#fff",
   },
   buttonLogin:{
     backgroundColor: COLORS.primaryPurple,

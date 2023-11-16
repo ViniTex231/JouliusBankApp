@@ -12,7 +12,7 @@ export default function SignIn({ navigation }) {
 
 	
 	const submit = () => {
-		axios.post('http://192.168.100.51:8000/api/v1/auth/jwt/create/',
+		axios.post('http://10.109.71.15:8000/api/v1/auth/jwt/create/',
 		{
 			registro: cpf,
 			password: senha
