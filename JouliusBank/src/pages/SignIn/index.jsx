@@ -4,26 +4,23 @@ import styles from "../SignIn/style";
 import InputForm from "../../components/InputForm";
 import { AntDesign } from "@expo/vector-icons";
 import axios from "axios";
+import { criarToken, useAuth } from "../../services/api";
 
 export default function SignIn({ navigation }) {
 
 	const [cpf, setCpf] = useState(0)
 	const [senha, setSenha] = useState('')
+	const [conta, setConta] = useState(null)
 
-	
-	const submit = () => {
-		axios.post('http://10.234.93.57:8000/api/v1/auth/jwt/create/',
-		{
-			registro: cpf,
-			password: senha
-		}).then((res)=>{
-			console.log(res.status)
-			if (res.status === 200){
-				navigation.navigate("Main")
-			}
-		}).catch((erro)=>{
-			console.log(erro)
-		})
+	const { login } = useAuth();
+
+	const submit = async () => {
+		const token = await criarToken(cpf, senha, login)
+		console.log(token)
+
+		if (token.status === 200){
+			navigation.navigate('Main')
+		}
 	}
 
 	return (
@@ -55,6 +52,7 @@ export default function SignIn({ navigation }) {
 			<View style={styles.containerForm}>
 				<TextInput label="CPF ou CNPJ" placeholder="123.456.789-10" onChangeText={(value) => setCpf(value)}/>
 				<TextInput label="Senha" placeholder="******" onChangeText={(value) => setSenha(value)}/>
+				<TextInput label="Conta" placeholder="******" onChangeText={(value) => setConta(value)}/>
 				<View style={styles.buttonView}>
 					<TouchableOpacity
 						style={styles.buttonLogin}

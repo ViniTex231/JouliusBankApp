@@ -4,6 +4,7 @@ import styles from "../SignUp/style";
 import Button from "../../components/Button";
 import { AntDesign } from "@expo/vector-icons";
 import axios from "axios";
+import { criarCartao, criarConta, criarToken, criarUsuario, useAuth } from "../../services/api";
 
 export default function SignUp({ navigation }) {
 	const [nome, setNome] = useState('')
@@ -14,39 +15,24 @@ export default function SignUp({ navigation }) {
 	const [email, setEmail] = useState('')
 	const [senha, setSenha] = useState('')
 
-	const fodase = () => {
-		axios.post('http://10.234.93.57:8000/api/v1/contas',
-		{
-			cliente: cpf
-		}).then((res)=>{
-			console.log(res)
-		}).catch((erro)=>{
-			console.log(erro)
-		})
-	}
+	
+	const {login} = useAuth()
 
-	const submit = ()=> {
-		axios.post('http://10.234.93.57:8000/api/v1/auth/users/',
-		{
-			registro: cpf,
-			nome_razao_social: nome,
-			nome_social_fantasia: social,
-			foto_logo: "a",
-			data_nascimento_abertura: nascimento,
-			password: senha
-		}
-		).then((res)=>{
-			console.log(res)
-			fodase()
+	const submit = async () => {
+		const usuario = await criarUsuario(cpf, nome, social, "foto_logo", nascimento, senha)
+		console.log(usuario)
+
+		if (usuario === 201){
 			navigation.navigate("SignIn")
-			setNome('')
-			setSocial('')
-			setNascimento('')
-			setEmail('')
-			setSenha('')
-		}).catch((erro)=>{
-			console.log(erro)
-		})
+			const token = await criarToken(cpf, senha, login)
+
+			const conta = await criarConta(token.acesso, cpf)
+			console.log(conta)
+			console.log(typeof(conta))
+
+			const cartao = await criarCartao(token.acesso, conta)
+		}
+	
 	}
 
 	return (
