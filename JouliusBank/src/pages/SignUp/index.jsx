@@ -4,7 +4,7 @@ import styles from "../SignUp/style";
 import Button from "../../components/Button";
 import { AntDesign } from "@expo/vector-icons";
 import axios from "axios";
-import { criarCartao, criarConta, criarToken, criarUsuario, useAuth } from "../../services/api";
+import { criarCartao, criarClientePf, criarConta, criarToken, criarUsuario, useAuth } from "../../services/api";
 
 export default function SignUp({ navigation }) {
 	const [nome, setNome] = useState('')
@@ -15,7 +15,6 @@ export default function SignUp({ navigation }) {
 	const [email, setEmail] = useState('')
 	const [senha, setSenha] = useState('')
 
-	
 	const {login} = useAuth()
 
 	const submit = async () => {
@@ -26,9 +25,9 @@ export default function SignUp({ navigation }) {
 			navigation.navigate("SignIn")
 			const token = await criarToken(cpf, senha, login)
 
+			const clientepf = await criarClientePf(token.acesso, cpf, rg)
+
 			const conta = await criarConta(token.acesso, cpf)
-			console.log(conta)
-			console.log(typeof(conta))
 
 			const cartao = await criarCartao(token.acesso, conta)
 		}

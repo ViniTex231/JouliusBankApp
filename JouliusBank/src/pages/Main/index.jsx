@@ -4,27 +4,35 @@ import styles from "./style";
 import MenuButton from "../../components/MenuButton";
 import Activity from "../../components/Activity";
 import axios from 'axios'
+import { getConta, useAuth } from "../../services/api";
 
-export default function Main({ navigation }) {
-	
+const Main = ({ navigation }) => {
+	const {jwt, registroAtivo, conta} = useAuth()
 	const [balance, setBalance] = useState(0)
 	const [user_id, setUser_id] = useState(1)
 	const [movements, setMovements] = useState([])
 
-	useEffect(()=>{
-		axios.get(`http://10.109.71.15:8000/api/v1/contas/${user_id}/`)
-		.then((res)=>{
-			setBalance(res.data.saldo)
-		}).catch((erro)=>{
-			console.log(erro)
-		})
-		axios.get(`http://10.109.71.15:8000/api/v1/movimentacoes/`)
-		.then((res)=>{
-			setMovements(res.data)
-		}).catch((erro)=>{
-			console.log(erro)
-		})
-	}, [user_id])
+	// useEffect(async ()=>{
+	// 	saldo = await getSaldo(jwt, registroAtivo)
+	// 	axios.get(`http://10.109.71.15:8000/api/v1/movimentacoes/`)
+	// 	.then((res)=>{
+	// 		setMovements(res.data)
+	// 	}).catch((erro)=>{
+	// 		console.log(erro)
+	// 	})
+	// }, [user_id])
+
+	useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const conta1 = await getConta(jwt, conta);
+        setBalance(conta1.saldo)
+      }catch(err) {
+        console.log("FETCH saldo DATA err", err)
+      }
+    }
+    fetchUserData()
+  }, [])
 
 	// useEffect(()=>{
 	// 	axios.get(`http://127.0.0.1:8000/api/v1/movimentacoes/1/`)
@@ -100,3 +108,5 @@ export default function Main({ navigation }) {
 		</View>
 	);
 }
+
+export default Main;

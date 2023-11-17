@@ -36,7 +36,7 @@ export const useAuth = () => {
 }
 
 export const axiosInstance = axios.create({ 
-    baseURL: 'http://192.168.100.51:8000/api/v1/'
+    baseURL: 'http://10.109.71.15:8000/api/v1/'
 })
 
 export async function criarUsuario(registro, nome_razao_social, nome_social_fantasia, foto_logo, data_nascimento_abertura, password) {
@@ -94,7 +94,7 @@ export async function criarCartao(jwt, conta){
         const resposta = await axiosInstance.post(
         'cartoes/',
         {
-            conta: conta
+            id_conta: conta
         },
         {
             headers: {
@@ -102,6 +102,60 @@ export async function criarCartao(jwt, conta){
             }
         })
         return resposta
+    } catch (erro){
+        console.log(erro)
+    }
+}
+
+export async function criarClientePf(jwt, cpf, rg){
+    try{
+        const resposta = await axiosInstance.post(
+        'clientesPF/',
+        {
+            cpf: cpf,
+            rg: rg
+        },
+        {
+            headers: {
+                Authorization: `Bearer ${jwt}`,
+            }
+        })
+        return resposta
+    } catch (erro){
+        console.log(erro)
+    }
+}
+
+export async function getConta(jwt, conta){
+    try{
+        const resposta = await axiosInstance.get(
+        `contas/${conta}/`,
+        {
+            headers: {
+                Authorization: `Bearer ${jwt}`,
+            }
+        })
+        return resposta.data
+    } catch (erro){
+        console.log(erro)
+    }
+}
+
+export async function criarPix(jwt, origem, destino, valor){
+    try{
+        const resposta = await axiosInstance.post(
+        'pix/',
+        {
+            origem: origem,
+            destino: destino,
+            valor: valor
+        },
+        {
+            headers: {
+                Authorization: `Bearer ${jwt}`,
+            }
+        })
+        return resposta.data
     } catch (erro){
         console.log(erro)
     }

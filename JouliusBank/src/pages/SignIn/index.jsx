@@ -12,13 +12,15 @@ export default function SignIn({ navigation }) {
 	const [senha, setSenha] = useState('')
 	const [conta, setConta] = useState(null)
 
-	const { login } = useAuth();
+	const { login, ativo, registroAtivo } = useAuth();
 
 	const submit = async () => {
 		const token = await criarToken(cpf, senha, login)
 		console.log(token)
 
 		if (token.status === 200){
+			ativo(conta)
+			registroAtivo(cpf)
 			navigation.navigate('Main')
 		}
 	}
