@@ -4,6 +4,7 @@ import styles from "../SignUpPJ/style";
 import Button from "../../components/Button";
 import { AntDesign } from "@expo/vector-icons";
 import axios from "axios";
+import { criarCartao, criarClientePj, criarConta, criarToken, criarUsuario, useAuth } from "../../services/api"
 
 export default function SignUpPJ({ navigation }) {
 
@@ -16,26 +17,19 @@ export default function SignUpPJ({ navigation }) {
 	const [email, setEmail] = useState('')
 	const [senha, setSenha] = useState('')
 
-	const submit = () => {
-		axios.post('http://10.234.93.57:8000/api/v1/auth/users/',
-		{
-			registro: parseInt(cnpj),
-			nome_razao_social: nome,
-			nome_social_fantasia: social,
-			foto_logo: "a",
-			data_nascimento_abertura: abertura,
-			password: senha
-		}).then((res)=>{
-			console.log(res)
+	const {login} = useAuth()
+
+	const submit = async () => {
+		const usuario = await criarUsuario()
+		console.log(usuario)
+
+		if (usuario === 201){
 			navigation.navigate("SignIn")
-			setNome('')
-			setSocial('')
-			setAbertura('')
-			setEmail('')
-			setSenha('')
-		}).catch((erro)=>{
-			console.log(erro)
-		})
+			const token = await criarToken(cnpj, senha, login)
+			const clientepj = await criarClientePj(token.acesso, cnpj)
+			const conta = await criarConta(token.acesso, cnpj)
+			const cartao = await criarCartao(token.acesso, conta)
+		}
 	}
 
   return(

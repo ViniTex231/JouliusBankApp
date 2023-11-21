@@ -126,6 +126,24 @@ export async function criarClientePf(jwt, cpf, rg){
     }
 }
 
+export async function criarClientePJ(jwt, cnpj){
+    try{
+        const resposta = await axiosInstance.post(
+        'clientesPJ/',
+        {
+            cnpj: cnpj
+        },
+        {
+            headers: {
+                Authorization: `Bearer ${jwt}`,
+            }
+        })
+        return resposta
+    } catch (erro){
+        console.log(erro)
+    }
+}
+
 export async function getConta(jwt, conta){
     try{
         const resposta = await axiosInstance.get(
