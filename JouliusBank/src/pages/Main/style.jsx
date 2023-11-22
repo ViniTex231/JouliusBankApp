@@ -129,6 +129,9 @@ const styles = StyleSheet.create({
         borderTopLeftRadius: 25,
         borderTopRightRadius: 25,
         marginTop: '10%',
+    },
+    logo:{
+        marginTop: 100
     }
 })
 

@@ -3,29 +3,17 @@ import React, { useState, useEffect } from "react";
 import styles from "./style";
 import MenuButton from "../../components/MenuButton";
 import Activity from "../../components/Activity";
-import axios from 'axios'
 import { getConta, useAuth } from "../../services/api";
 
 const Main = ({ navigation }) => {
-	const {jwt, registroAtivo, conta} = useAuth()
+	const {jwt, registroAtivo, contaC} = useAuth()
 	const [balance, setBalance] = useState(0)
-	const [user_id, setUser_id] = useState(1)
 	const [movements, setMovements] = useState([])
-
-	// useEffect(async ()=>{
-	// 	saldo = await getSaldo(jwt, registroAtivo)
-	// 	axios.get(`http://10.109.71.15:8000/api/v1/movimentacoes/`)
-	// 	.then((res)=>{
-	// 		setMovements(res.data)
-	// 	}).catch((erro)=>{
-	// 		console.log(erro)
-	// 	})
-	// }, [user_id])
 
 	useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const conta1 = await getConta(jwt, conta);
+        const conta1 = await getConta(jwt, contaC);
         setBalance(conta1.saldo)
       }catch(err) {
         console.log("FETCH saldo DATA err", err)
@@ -34,32 +22,21 @@ const Main = ({ navigation }) => {
     fetchUserData()
   }, [])
 
-	// useEffect(()=>{
-	// 	axios.get(`http://127.0.0.1:8000/api/v1/movimentacoes/1/`)
-	// 	.then((res)=>{
-	// 		setName(res.data.operacao)
-	// 		setDate(res.data.data_hora)
-	// 		setValue(res.data.valor)
-	// 	}).catch((erro)=>{
-	// 		console.log(erro.response.statusText)
-	// 	})
-	// }, [])
-
-
 	return (
 		<View style={styles.container}>
-			<View style={styles.header}>
-				<Image
-					source={require("../../assets/iconeLogo.png")}
-					// style={{ width: "100%" }}
-					// resizeMode="contain"
-				/>
-				<Image
-					source={require("../../assets/man.png")}
-					style={styles.imageMan}
-					resizeMode="contain"
-				/>
-			</View>
+			<TouchableOpacity onPress={() => navigation.navigate("Profile")}>
+				<View style={styles.header}>	
+					<Image
+						source={require("../../assets/iconeLogo.png")}
+						style={styles.logo}
+					/>
+						<Image
+							source={require("../../assets/man.png")}
+							style={styles.imageMan}
+							resizeMode="contain"
+						/>
+				</View>
+			</TouchableOpacity>
 
 			<View style={styles.boxBalance}>
 				<View style={styles.balance}>

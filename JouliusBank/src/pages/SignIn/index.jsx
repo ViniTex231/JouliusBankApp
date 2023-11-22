@@ -1,9 +1,7 @@
 import { View, Text, Image, TouchableOpacity, TextInput } from "react-native";
 import React, { useState } from "react";
 import styles from "../SignIn/style";
-import InputForm from "../../components/InputForm";
 import { AntDesign } from "@expo/vector-icons";
-import axios from "axios";
 import { criarToken, useAuth } from "../../services/api";
 
 export default function SignIn({ navigation }) {
@@ -52,9 +50,21 @@ export default function SignIn({ navigation }) {
 			</View>
 
 			<View style={styles.containerForm}>
-				<TextInput label="CPF ou CNPJ" placeholder="123.456.789-10" onChangeText={(value) => setCpf(value)}/>
-				<TextInput label="Senha" placeholder="******" onChangeText={(value) => setSenha(value)}/>
-				<TextInput label="Conta" placeholder="******" onChangeText={(value) => setConta(value)}/>
+				<View style={styles.inputView}>
+					<Text style={styles.textDesc}>CPF ou CNPJ</Text>
+				</View>
+				<TextInput style={styles.input} placeholder="123.456.789-10" onChangeText={(value) => setCpf(value)}/>
+
+				<View style={styles.inputView}>
+					<Text style={styles.textDesc}>Número da Conta</Text>
+				</View>
+				<TextInput style={styles.input} placeholder="******" onChangeText={(value) => setConta(value)}/>
+
+				<View style={styles.inputView}>
+					<Text style={styles.textDesc}>Senha</Text>
+				</View>
+				<TextInput style={styles.input} placeholder="******" onChangeText={(value) => setSenha(value)}/>
+
 				<View style={styles.buttonView}>
 					<TouchableOpacity
 						style={styles.buttonLogin}

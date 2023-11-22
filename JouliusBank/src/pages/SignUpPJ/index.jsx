@@ -1,9 +1,7 @@
 import { View, Text, Image, ScrollView, TouchableOpacity, TextInput } from "react-native";
 import React, { useState } from "react";
 import styles from "../SignUpPJ/style";
-import Button from "../../components/Button";
 import { AntDesign } from "@expo/vector-icons";
-import axios from "axios";
 import { criarCartao, criarClientePj, criarConta, criarToken, criarUsuario, useAuth } from "../../services/api"
 
 export default function SignUpPJ({ navigation }) {
@@ -20,7 +18,7 @@ export default function SignUpPJ({ navigation }) {
 	const {login} = useAuth()
 
 	const submit = async () => {
-		const usuario = await criarUsuario()
+		const usuario = await criarUsuario(cnpj, nome, social, "foto_logo", abertura, senha)
 		console.log(usuario)
 
 		if (usuario === 201){

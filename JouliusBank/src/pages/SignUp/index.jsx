@@ -1,9 +1,7 @@
 import { View, Text, Image, ScrollView, TouchableOpacity, TextInput } from "react-native";
 import React, { useState } from "react";
 import styles from "../SignUp/style";
-import Button from "../../components/Button";
 import { AntDesign } from "@expo/vector-icons";
-import axios from "axios";
 import { criarCartao, criarClientePf, criarConta, criarToken, criarUsuario, useAuth } from "../../services/api";
 
 export default function SignUp({ navigation }) {

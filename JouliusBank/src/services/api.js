@@ -5,7 +5,7 @@ const AuthContext = createContext()
 
 export const AuthProvider = ({ children }) => {
     const [jwt, setJwt] = useState(null)
-    const [conta, setConta] = useState(null)
+    const [contaC, setConta] = useState(null)
     const [registro, setRegistro] = useState(null)
 
     const login = (token) => {
@@ -16,8 +16,8 @@ export const AuthProvider = ({ children }) => {
         setJwt(null)
     }
 
-    const ativo = (conta) => {
-        setConta(conta)
+    const ativo = (contaC) => {
+        setConta(contaC)
     }
 
     const registroAtivo = (registro) => {
@@ -25,7 +25,7 @@ export const AuthProvider = ({ children }) => {
     }
     
     return (
-        <AuthContext.Provider value={{jwt, conta, registro, login, logout, ativo, registroAtivo}}>
+        <AuthContext.Provider value={{jwt, contaC, registro, login, logout, ativo, registroAtivo}}>
             {children}
         </AuthContext.Provider>
     )
@@ -36,7 +36,7 @@ export const useAuth = () => {
 }
 
 export const axiosInstance = axios.create({ 
-    baseURL: 'http://10.109.71.15:8000/api/v1/'
+    baseURL: 'http://10.109.71.16:8000/api/v1/'
 })
 
 export async function criarUsuario(registro, nome_razao_social, nome_social_fantasia, foto_logo, data_nascimento_abertura, password) {
@@ -126,7 +126,7 @@ export async function criarClientePf(jwt, cpf, rg){
     }
 }
 
-export async function criarClientePJ(jwt, cnpj){
+export async function criarClientePj(jwt, cnpj){
     try{
         const resposta = await axiosInstance.post(
         'clientesPJ/',
@@ -144,10 +144,10 @@ export async function criarClientePJ(jwt, cnpj){
     }
 }
 
-export async function getConta(jwt, conta){
+export async function getConta(jwt, contaC){
     try{
         const resposta = await axiosInstance.get(
-        `contas/${conta}/`,
+        `contas/${contaC}/`,
         {
             headers: {
                 Authorization: `Bearer ${jwt}`,

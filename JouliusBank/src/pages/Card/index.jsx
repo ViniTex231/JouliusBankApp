@@ -3,11 +3,11 @@ import React, { useState, useEffect, useId } from "react";
 import styles from "./style";
 import Button from "../../components/Button";
 import { FontAwesome } from "@expo/vector-icons";
-import axios from "axios";
+import { useAuth } from "../../services/api";
 
 export default function Card( {navigation} ) {
 
-	const [user_id, setUser_id] = useState(1)
+	const {jwt, registroAtivo, conta} = useAuth()
 	const [numero, setNumero] = useState("")
 	const [validade, setValidade] = useState(0)
 	const [cvv, setCvv] = useState(0)
@@ -15,26 +15,19 @@ export default function Card( {navigation} ) {
 	const [nome, setNome] = useState("")
 
 	useEffect(()=>{
-		axios.get(`http://10.109.71.15:8000/api/v1/cartoes/${user_id}/`)
-		.then((res)=>{
-			setNumero(res.data.numero)
-			setValidade(res.data.validade)
-			setCvv(res.data.cvv)
-		}).catch((erro)=>{
-			console.log(erro)
-		})
-		axios.get(`http://10.109.71.15:8000/api/v1/contas/${user_id}`)
-		.then((res)=>{
-			setLimite(res.data.limite)
-		}).catch((erro)=>{
-			console.log(erro)
-		})
-		axios.get(`http://10.109.71.15:8000/api/v1/clientes/${user_id}/`)
-		.then((res)=>{
-			setNome(res.data.nome_razao_social)
-		}).catch((erro)=>{
-			console.log(erro)
-		})
+		const fetchUserData = async () => {
+			try {
+				const conta1 = await getConta(jwt, conta)
+				setNumero(conta1.numero)
+				setValidade(conta1.validade)
+				setCvv(conta1.cvv)
+				setNome(conta1.nome)
+				setLimite(conta1.limite)
+			} catch (err) {
+				console.log("FETCH numero, validade, cvv, nome, limite DATA err", err)
+			}
+		} 
+		fetchUserData()
 	}, [])
 
 	return (
