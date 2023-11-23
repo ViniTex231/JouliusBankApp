@@ -178,3 +178,18 @@ export async function criarPix(jwt, origem, destino, valor){
         console.log(erro)
     }
 }
+
+export async function getNome(jwt){
+    try{
+        const resposta = await axiosInstance.get(
+        'auth/users/',
+        {
+            headers: {
+                Authorization: `Bearer ${jwt}`,
+            }
+        })
+        return resposta.data
+    } catch (erro){
+        console.log(erro)
+    }
+}

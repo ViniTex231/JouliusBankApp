@@ -4,9 +4,9 @@ import styles from "../Profile/style"
 import { FontAwesome } from "@expo/vector-icons"
 import axios from "axios"
 import * as ImagePicker from 'expo-image-picker'
-import { useAuth } from "../../services/api"
+import { getConta, useAuth, getNome } from "../../services/api"
 
-export default function Profile() {
+const Profile = ({ navigation }) => {
 
   const {jwt, registroAtivo, contaC} = useAuth()
   const [nome, setNome] = useState("")
@@ -47,13 +47,25 @@ export default function Profile() {
     const fetchUserData = async () => {
       try {
         const conta1 = await getConta(jwt, contaC)
-        setNome(conta1.nome)
         setAgencia(conta1.agencia)
-        setConta(conta1.conta)
+        setConta(conta1.numero)
         setEmail(conta1.email)
         setCpf(conta1.cpf)
       } catch (err) {
-        console.log("FETCH nome, agencia, conta, email, cpf DATA err", err)
+        console.log("FETCH, agencia, conta, email, cpf DATA err", err)
+      }
+    }
+    fetchUserData()
+  }, [])
+
+
+  useEffect(()=>{
+    const fetchUserData = async () => {
+      try {
+        const conta1 = await getNome(jwt)
+        setNome(conta1.nome_razao_social)
+      } catch (err) {
+        console.log("FETCH nome DATA err", err)
       }
     }
     fetchUserData()
@@ -63,7 +75,7 @@ export default function Profile() {
     <View style={styles.container}>
       <View style={styles.header}>
         <View>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate("Main")}>
             <FontAwesome 
               name="arrow-left"
               size={30}
@@ -122,3 +134,5 @@ export default function Profile() {
     </View>
   )
 }
+
+export default Profile
