@@ -2,7 +2,7 @@ import { View, Text, Image, ScrollView, TouchableOpacity, TextInput } from "reac
 import React, { useState } from "react";
 import styles from "../SignUp/style";
 import { AntDesign } from "@expo/vector-icons";
-import { criarCartao, criarClientePf, criarConta, criarToken, criarUsuario, useAuth } from "../../services/api";
+import { criarCartao, criarClientePf, criarConta, criarToken, criarUsuario, useAuth, criarContato } from "../../services/api";
 
 export default function SignUp({ navigation }) {
 	const [nome, setNome] = useState('')
@@ -24,6 +24,8 @@ export default function SignUp({ navigation }) {
 			const token = await criarToken(cpf, senha, login)
 
 			const clientepf = await criarClientePf(token.acesso, cpf, rg)
+
+			const contato = await criarContato(token.acesso, cpf, email)
 
 			const conta = await criarConta(token.acesso, cpf)
 

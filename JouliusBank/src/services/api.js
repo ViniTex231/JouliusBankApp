@@ -55,6 +55,23 @@ export async function criarUsuario(registro, nome_razao_social, nome_social_fant
     }
 }
 
+export async function criarContato(jwt, client, email) {
+    try{
+        const resposta = await axiosInstance.post('contatos/', {
+            id_cliente: client,
+            email: email,
+        },
+        {
+            headers: {
+                Authorization: `Bearer ${jwt}`,
+            }
+        })
+        return resposta.status
+    } catch (erro) {
+        console.log(erro)
+    }
+}
+
 export async function criarToken(registro, senha, setAuthToken) {
     try {
         const resposta = await axiosInstance.post('auth/jwt/create/', {
@@ -179,7 +196,7 @@ export async function criarPix(jwt, origem, destino, valor){
     }
 }
 
-export async function getNome(jwt){
+export async function getPerfil(jwt){
     try{
         const resposta = await axiosInstance.get(
         'auth/users/',

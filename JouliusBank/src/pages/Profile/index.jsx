@@ -4,7 +4,7 @@ import styles from "../Profile/style"
 import { FontAwesome } from "@expo/vector-icons"
 import axios from "axios"
 import * as ImagePicker from 'expo-image-picker'
-import { getConta, useAuth, getNome } from "../../services/api"
+import { getConta, useAuth, getNome, getPerfil } from "../../services/api"
 
 const Profile = ({ navigation }) => {
 
@@ -50,22 +50,22 @@ const Profile = ({ navigation }) => {
         setAgencia(conta1.agencia)
         setConta(conta1.numero)
         setEmail(conta1.email)
-        setCpf(conta1.cpf)
       } catch (err) {
-        console.log("FETCH, agencia, conta, email, cpf DATA err", err)
+        console.log("FETCH, agencia, conta, email, DATA err", err)
       }
     }
     fetchUserData()
   }, [])
-
+  
 
   useEffect(()=>{
     const fetchUserData = async () => {
       try {
-        const conta1 = await getNome(jwt)
-        setNome(conta1.nome_razao_social)
+        const conta1 = await getPerfil(jwt)
+        setCpf(conta1[0].registro)
+        setNome(conta1[0].nome_razao_social)
       } catch (err) {
-        console.log("FETCH nome DATA err", err)
+        console.log("FETCH cpf DATA err", err)
       }
     }
     fetchUserData()
