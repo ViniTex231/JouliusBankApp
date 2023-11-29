@@ -1,9 +1,20 @@
 import { View, Text, TouchableOpacity, Image, TextInput } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import styles from "./style";
 import { FontAwesome } from "@expo/vector-icons";
+import { criarEmprestimo, useAuth } from "../../services/api";
 
 export default function Loan({ navigation }) {
+
+	const { jwt, contaC } = useAuth()
+	const [valor, setValor] = useState(0)
+
+	const submit = async () => {
+		const emprestimo = await criarEmprestimo(jwt, contaC, parseFloat(valor))
+		console.log(emprestimo)
+		navigation.navigate("Main")
+	}
+
 	return (
 		<View style={styles.container}>
 			<View style={styles.header}>
@@ -24,11 +35,11 @@ export default function Loan({ navigation }) {
 			<View style={styles.value}>
 				<Text style={styles.textValue}>Valor</Text>
 				<View style={styles.boxValue}>
-					<TextInput placeholder="R$" style={styles.input} />
+					<TextInput placeholder="R$" style={styles.input} onChangeText={(value) => setValor(value)} />
 				</View>
 			</View>
 
-			<TouchableOpacity onPress={() => navigation.navigate("Main")}>
+			<TouchableOpacity onPress={() => submit()}>
 				<View style={styles.button}>
 					<FontAwesome
 						name="check"

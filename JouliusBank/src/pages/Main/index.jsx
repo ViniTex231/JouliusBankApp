@@ -1,26 +1,32 @@
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { View, Text, Image, TouchableOpacity, ScrollView } from "react-native";
 import React, { useState, useEffect } from "react";
 import styles from "./style";
 import MenuButton from "../../components/MenuButton";
 import Activity from "../../components/Activity";
-import { getConta, useAuth } from "../../services/api";
+import { getConta, getMovimentacao, useAuth } from "../../services/api";
 
 const Main = ({ navigation }) => {
 	const {jwt, registroAtivo, contaC} = useAuth()
 	const [balance, setBalance] = useState(0)
-	const [movements, setMovements] = useState([])
+	const [movements, setMovements] = useState()
 
 	useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const conta1 = await getConta(jwt, contaC);
-        setBalance(conta1.saldo)
-      }catch(err) {
-        console.log("FETCH saldo DATA err", err)
-      }
-    }
-    fetchUserData()
-  }, [])
+		const fetchUserData = async () => {
+			try {
+				const conta1 = await getConta(jwt, contaC);
+				setBalance(conta1.saldo);
+	
+				const contamov = await getMovimentacao(jwt);
+				console.log('Dados de movimentação:', contamov);
+	
+				setMovements(contamov);
+			} catch (err) {
+				console.log('FETCH saldo DATA err', err);
+			}
+		};
+	
+		fetchUserData();
+	}, []);
 
 	return (
 		<View style={styles.container}>
@@ -69,21 +75,22 @@ const Main = ({ navigation }) => {
 			</View>
 
 			<View style={styles.containerActivities}>
-				<View style={styles.activitiesForm}>
+					<View style={styles.activitiesForm}>
 					<Text style={styles.activitiesText}>Sua atividade</Text>
-
-					{movements.map((movement)=>(
-						<Activity
-							key={movement.id}
-							name={movement.operacao + " - " + movement.descricao}
-							date={movement.data_hora}
-							value={"R$ "+movement.valor}
-						/>
-					))}
-				</View>
+						<ScrollView style={styles.scrol}>
+									{movements && Array.isArray(movements) && movements.map((movement)=>(
+										<Activity
+											key={movement.id}
+											name={movement.operacao + " - "}
+											date={movement.data_hora}
+											value={"R$ " + movement.valor}
+										/>
+									))}
+							</ScrollView>
+						</View>
 			</View>
 		</View>
 	);
 }
-
+//
 export default Main;

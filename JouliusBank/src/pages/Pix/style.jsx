@@ -23,10 +23,15 @@ const styles = StyleSheet.create({
   destinyAccount:{
     paddingStart: "5%",
     marginTop: "5%",
+    borderBottomColor: COLORS.borderPurple,
+    borderBottomWidth: 2,
+    width: "28%",
+    marginLeft: "5%"
   },
   value:{
     paddingStart: "5%",
     marginTop: "5%",
+
   },
   textValue:{
     borderBottomColor: COLORS.borderPurple,

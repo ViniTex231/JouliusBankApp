@@ -132,7 +132,13 @@ const styles = StyleSheet.create({
     },
     logo:{
         marginTop: 100
-    }
+    },
+
+    scrol:{
+        height: 300,
+        
+    },
+
 })
 
 export default styles

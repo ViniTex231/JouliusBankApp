@@ -69,6 +69,9 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 		justifyContent: "center",
 	},
+	scrol:{
+		height: 600,
+	}
 });
 
 export default styles;

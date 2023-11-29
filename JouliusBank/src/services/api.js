@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createContext, useState, useContext } from "react";
+import { Alert } from "react-native";
 
 const AuthContext = createContext()
 
@@ -79,6 +80,7 @@ export async function criarToken(registro, senha, setAuthToken) {
             password: senha
         })
         setAuthToken(resposta.data.access)
+        
         return{
             status: resposta.status,
             acesso: resposta.data.access
@@ -178,6 +180,9 @@ export async function getConta(jwt, contaC){
 
 export async function criarPix(jwt, origem, destino, valor){
     try{
+        console.log(origem)
+        console.log(destino)
+        console.log(valor)
         const resposta = await axiosInstance.post(
         'pix/',
         {
@@ -196,10 +201,44 @@ export async function criarPix(jwt, origem, destino, valor){
     }
 }
 
+export async function criarEmprestimo(jwt, origem, valor){
+    try{
+        const resposta = await axiosInstance.post(
+        'emprestimo/',
+        {
+            origem: origem,
+            valor: valor
+        },
+        {
+            headers: {
+                Authorization: `Bearer ${jwt}`,
+            }
+        })
+        return resposta.data
+    } catch (erro){
+        console.log(erro)
+    }
+}
+
 export async function getPerfil(jwt){
     try{
         const resposta = await axiosInstance.get(
         'auth/users/',
+        {
+            headers: {
+                Authorization: `Bearer ${jwt}`,
+            }
+        })
+        return resposta.data
+    } catch (erro){
+        console.log(erro)
+    }
+}
+
+export async function getMovimentacao(jwt){
+    try{
+        const resposta = await axiosInstance.get(
+        'movimentacoes/',
         {
             headers: {
                 Authorization: `Bearer ${jwt}`,

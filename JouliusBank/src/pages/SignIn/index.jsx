@@ -8,7 +8,7 @@ export default function SignIn({ navigation }) {
 
 	const [cpf, setCpf] = useState(0)
 	const [senha, setSenha] = useState('')
-	const [conta, setConta] = useState(null)
+	const [conta, setConta] = useState('')
 
 	const { login, ativo, registroAtivo } = useAuth();
 
@@ -17,7 +17,9 @@ export default function SignIn({ navigation }) {
 		console.log(token)
 
 		if (token.status === 200){
+			console.log(conta)
 			ativo(conta)
+			
 			registroAtivo(cpf)
 			navigation.navigate('Main')
 		}

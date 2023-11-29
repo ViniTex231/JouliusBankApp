@@ -9,13 +9,14 @@ import { criarPix, useAuth } from "../../services/api";
 
 export default function Pix({ navigation }) {
 
-		const { jwt, conta } = useAuth()
+		const { jwt, contaC } = useAuth()
 
 		const [destino, setDestino] = useState(null)
 		const [valor, setValor] = useState(0)
 
 		const submit = async () => {
-			const pix = await criarPix(jwt, conta, destino, parseFloat(valor))
+			
+			const pix = await criarPix(jwt, contaC, destino, parseFloat(valor))
 			console.log(pix)
 			navigation.navigate("Main")
 
@@ -44,7 +45,7 @@ export default function Pix({ navigation }) {
 			</View>
 
 			<View style={styles.destinyAccount}>
-				<TextInput label="Destino" placeholder="***" onChangeText={(value) => setDestino(value)} />
+				<TextInput label="Conta de Destino" placeholder="******" onChangeText={(value) => setDestino(value)} />
 			</View>
 
 			<View style={styles.value}>
