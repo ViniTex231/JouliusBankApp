@@ -37,7 +37,7 @@ export const useAuth = () => {
 }
 
 export const axiosInstance = axios.create({ 
-    baseURL: 'http://10.109.71.16:8000/api/v1/'
+    baseURL: 'http://10.234.93.57:8000/api/v1/'
 })
 
 export async function criarUsuario(registro, nome_razao_social, nome_social_fantasia, foto_logo, data_nascimento_abertura, password) {
@@ -251,16 +251,54 @@ export async function getMovimentacao(jwt){
     }
 }
 
-export async function getCartao(jwt){
-    try{
+export async function getCartao(jwt, contaC){
+    try {
         const resposta = await axiosInstance.get(
-        `cartoes/?conta=${contaC}`,
+            `cartoes/?conta=${contaC}`,
+            {
+                headers: {
+                    Authorization: `Bearer ${jwt}`,
+                }
+            }
+        );
+        const data = resposta.data;
+        
+        const mappedCards = data.map((card) => ({
+            id: card.id,
+            id_conta: card.id_conta,
+            numero: card.numero,
+            cvv: card.cvv,
+            validade: card.validade,
+            bandeira: card.bandeira,
+            situacao: card.situacao
+        }));
+        
+        return mappedCards;
+    } catch (erro){
+        console.log(erro);
+    }
+}
+
+export async function getNome(jwt){
+    try {
+        const resposta = await axiosInstance.get(
+        'auth/users/',
         {
             headers: {
                 Authorization: `Bearer ${jwt}`,
             }
         })
-        return resposta.data
+        const data = resposta.data
+
+        const mappedNames = data.map((name)=> ({
+            nome_razao_social: name.nome_razao_social,
+            nome_social_fantasia: name.nome_social_fantasia,
+            foto_logo: name.foto_logo,
+            data_nascimento_abertura: name.data_nascimento_abertura,
+            registro: data.registro
+        }))
+
+        return mappedNames
     } catch (erro){
         console.log(erro)
     }

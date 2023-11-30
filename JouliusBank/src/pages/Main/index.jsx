@@ -79,7 +79,7 @@ const Main = ({ navigation }) => {
 				<TouchableOpacity onPress={() => navigation.navigate("Loan")}>
 					<MenuButton icon="" label="Empréstimos" />
 				</TouchableOpacity>
-				<TouchableOpacity>
+				<TouchableOpacity onPress={() => navigation.navigate("LoanPayment")}>
 					<MenuButton icon="" label="Pagamentos" />
 				</TouchableOpacity>
 				<TouchableOpacity onPress={() => navigation.navigate("Card")}>

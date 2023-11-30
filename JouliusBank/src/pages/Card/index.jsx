@@ -3,14 +3,15 @@ import React, { useState, useEffect, useId } from "react";
 import styles from "./style";
 import Button from "../../components/Button";
 import { FontAwesome } from "@expo/vector-icons";
-import { useAuth, getConta, getCartao } from "../../services/api";
+import { useAuth, getConta, getCartao, getNome } from "../../services/api";
 
 export default function Card( {navigation} ) {
-
+	const [cards, setCards] = useState([])
+	const [names, setNames] = useState([])
 	const {jwt, registroAtivo, contaC} = useAuth()
 	const [numero, setNumero] = useState(null)
-	const [validade, setValidade] = useState(null)
-	const [cvv, setCvv] = useState(null)
+	const [validade, setValidade] = useState(0)
+	const [cvv, setCvv] = useState(0)
 	const [limite, setLimite] = useState(null)
 	const [nome, setNome] = useState(null)
 
@@ -19,17 +20,40 @@ export default function Card( {navigation} ) {
 			try {
 				const conta1 = await getConta(jwt, contaC)
 				setNumero(conta1.numero)
-				setNome(conta1.nome)
 				setLimite(conta1.limite)
-
-				const cartao = await getCartao(jwt, contaC)
-				setValidade(cartao.validade)
-				setCvv(cartao.cvv)
 			} catch (err) {
 				console.log("FETCH numero, validade, cvv, nome, limite DATA err", err)
 			}
 		} 
 		fetchUserData()
+	}, [])
+
+	useEffect(()=>{
+		const fetchCardData = async () => {
+			try {
+				const cartoes = await getCartao(jwt, contaC)
+				setCvv(cartoes[0].cvv)
+				setValidade(cartoes[0].validade)
+				setCards(cartoes)
+				
+			} catch (err) {
+				console.log("FETCH cvv, validade DATA err", err)
+			}
+		}
+		fetchCardData()
+	}, [])
+
+	useEffect(()=>{
+		const fetchNameData = async () => {
+			try {
+				const nomes = await getNome(jwt)
+				setNome(nomes[0].nome_razao_social)
+				setNames(nomes)
+			} catch (err) {
+				console.log("FETCH nome DATA err", err)
+			}
+		}
+		fetchNameData()
 	}, [])
 
 	return (

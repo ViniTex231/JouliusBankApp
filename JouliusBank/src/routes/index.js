@@ -11,6 +11,7 @@ import Extract from "../pages/Extract";
 import Pix from "../pages/Pix";
 import Loan from "../pages/Loan";
 import Profile from "../pages/Profile";
+import LoanPayment from "../pages/LoanPayment";
 
 const Stack = createStackNavigator();
 
@@ -74,6 +75,12 @@ export default function Routes() {
 			<Stack.Screen
 				name="Profile"
 				component={Profile}
+				options={{ headerShown: false }}
+			/>
+
+			<Stack.Screen
+				name="LoanPayment"
+				component={LoanPayment}
 				options={{ headerShown: false }}
 			/>
 		</Stack.Navigator>

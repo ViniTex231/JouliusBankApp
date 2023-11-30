@@ -9,6 +9,7 @@ export default function SignIn({ navigation }) {
 	const [cpf, setCpf] = useState(0)
 	const [senha, setSenha] = useState('')
 	const [conta, setConta] = useState('')
+	const [showPassword, setShowPassword] = useState(false)
 
 	const { login, ativo, registroAtivo } = useAuth();
 
@@ -23,6 +24,10 @@ export default function SignIn({ navigation }) {
 			registroAtivo(cpf)
 			navigation.navigate('Main')
 		}
+	}
+
+	const toggleShowPassword = () => {
+		setShowPassword(!showPassword)
 	}
 
 	return (
@@ -64,8 +69,17 @@ export default function SignIn({ navigation }) {
 
 				<View style={styles.inputView}>
 					<Text style={styles.textDesc}>Senha</Text>
+					<View>
+						<TextInput style={styles.input} placeholder="******" secureTextEntry={!showPassword} onChangeText={(value) => setSenha(value)}/>
+						<TouchableOpacity onPress={toggleShowPassword}>
+							<AntDesign
+								name={showPassword ? "eye" : "eyeo"}
+								size={24}
+								color="black"
+							/>
+						</TouchableOpacity>
+					</View>
 				</View>
-				<TextInput style={styles.input} placeholder="******" onChangeText={(value) => setSenha(value)}/>
 
 				<View style={styles.buttonView}>
 					<TouchableOpacity
