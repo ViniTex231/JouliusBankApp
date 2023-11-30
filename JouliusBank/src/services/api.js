@@ -172,6 +172,7 @@ export async function getConta(jwt, contaC){
                 Authorization: `Bearer ${jwt}`,
             }
         })
+        
         return resposta.data
     } catch (erro){
         console.log(erro)
@@ -204,7 +205,7 @@ export async function criarPix(jwt, origem, destino, valor){
 export async function criarEmprestimo(jwt, origem, valor){
     try{
         const resposta = await axiosInstance.post(
-        'emprestimo/',
+        'emprestimos/',
         {
             origem: origem,
             valor: valor
@@ -216,7 +217,7 @@ export async function criarEmprestimo(jwt, origem, valor){
         })
         return resposta.data
     } catch (erro){
-        console.log(erro)
+        Alert.alert("Erro", erro.response.data.error)
     }
 }
 
@@ -239,6 +240,21 @@ export async function getMovimentacao(jwt){
     try{
         const resposta = await axiosInstance.get(
         'movimentacoes/',
+        {
+            headers: {
+                Authorization: `Bearer ${jwt}`,
+            }
+        })
+        return resposta.data
+    } catch (erro){
+        console.log(erro)
+    }
+}
+
+export async function getCartao(jwt){
+    try{
+        const resposta = await axiosInstance.get(
+        `cartoes/?conta=${contaC}`,
         {
             headers: {
                 Authorization: `Bearer ${jwt}`,

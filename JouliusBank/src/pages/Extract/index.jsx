@@ -51,7 +51,7 @@ const Extract = ({ navigation }) => {
 			<View style={styles.activitiesForm}>
 				<Text style={styles.activitiesText}>Sua atividade</Text>
 				<ScrollView style={styles.scrol}>
-					{movements && Array.isArray(movements) && movements.map((movement) => (
+					{movements && Array.isArray(movements) && movements.reverse().map((movement) => (
 						<ActivityExtract
 							key={movement.id}
 							name={movement.operacao}

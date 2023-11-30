@@ -1,5 +1,6 @@
 import { View, Text, Image, TouchableOpacity, ScrollView } from "react-native";
 import React, { useState, useEffect } from "react";
+import { useFocusEffect } from "@react-navigation/native";
 import styles from "./style";
 import MenuButton from "../../components/MenuButton";
 import Activity from "../../components/Activity";
@@ -10,12 +11,23 @@ const Main = ({ navigation }) => {
 	const [balance, setBalance] = useState(0)
 	const [movements, setMovements] = useState()
 
+	useFocusEffect(
+		React.useCallback(() => {
+			async function fetchData() {
+				try {
+					const conta1 = await getConta(jwt, contaC);
+					setBalance(conta1.saldo);
+				} catch (err) {
+					console.log('FETCH saldo DATA err', err);
+				}
+			}
+			fetchData();
+		}, [navigation])
+	);
+
 	useEffect(() => {
 		const fetchUserData = async () => {
 			try {
-				const conta1 = await getConta(jwt, contaC);
-				setBalance(conta1.saldo);
-	
 				const contamov = await getMovimentacao(jwt);
 				console.log('Dados de movimentação:', contamov);
 	
@@ -26,7 +38,8 @@ const Main = ({ navigation }) => {
 		};
 	
 		fetchUserData();
-	}, []);
+	}, [balance]);
+
 
 	return (
 		<View style={styles.container}>
@@ -78,7 +91,7 @@ const Main = ({ navigation }) => {
 					<View style={styles.activitiesForm}>
 					<Text style={styles.activitiesText}>Sua atividade</Text>
 						<ScrollView style={styles.scrol}>
-									{movements && Array.isArray(movements) && movements.map((movement)=>(
+									{movements && Array.isArray(movements) && movements.reverse().map((movement)=>(
 										<Activity
 											key={movement.id}
 											name={movement.operacao + " - "}

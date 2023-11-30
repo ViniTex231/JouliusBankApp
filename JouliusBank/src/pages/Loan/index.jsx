@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, Image, TextInput } from "react-native";
+import { View, Text, TouchableOpacity, Image, TextInput, Alert } from "react-native";
 import React, { useState } from "react";
 import styles from "./style";
 import { FontAwesome } from "@expo/vector-icons";
@@ -10,9 +10,13 @@ export default function Loan({ navigation }) {
 	const [valor, setValor] = useState(0)
 
 	const submit = async () => {
-		const emprestimo = await criarEmprestimo(jwt, contaC, parseFloat(valor))
-		console.log(emprestimo)
-		navigation.navigate("Main")
+		try {
+			const emprestimo = await criarEmprestimo(jwt, contaC, parseFloat(valor))
+			// console.log(emprestimo)
+			navigation.navigate("Main")
+		} catch (error) {
+			console.log("AAAAAAA")
+		}
 	}
 
 	return (
