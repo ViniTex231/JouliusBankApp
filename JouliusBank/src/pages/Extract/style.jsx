@@ -4,11 +4,15 @@ const COLORS = {
 	primaryPurple: "#54007C",
 	borderPurple: "#A800F9",
 	normalWhite: "#fff",
-};
+	subtitle: 'rgba(255, 255, 255, 0.61)',
+	background: "#171715",
+	component: "#383837",
+  }
 
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
+		backgroundColor: COLORS.background,
 	},
 	containerExtract: {
 		width: "100%",
@@ -45,9 +49,9 @@ const styles = StyleSheet.create({
 		borderBottomColor: COLORS.borderPurple,
 		borderBottomWidth: 2,
 		width: "30%",
-		color: "#a1a1a1",
+		color: COLORS.subtitle,
 	},
-  activity:{
+  	activity:{
     paddingTop: "5%",
     paddingStart: "3%",
     display: 'flex',
@@ -55,19 +59,22 @@ const styles = StyleSheet.create({
     gap: 10,
     justifyContent: 'space-between',
     paddingRight: "5%"
-},
+	},
 	name: {
 		fontSize: 14,
 		overflow: "hidden",
 		width: "100%",
+		color: COLORS.normalWhite,
 	},
 	data: {
 		fontSize: 14,
+		color: COLORS.normalWhite,
 	},
 	price: {
 		fontSize: 16,
 		alignItems: "center",
 		justifyContent: "center",
+		color: COLORS.normalWhite,
 	},
 	scrol:{
 		height: 600,

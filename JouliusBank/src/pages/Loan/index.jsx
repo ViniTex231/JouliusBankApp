@@ -24,7 +24,7 @@ export default function Loan({ navigation }) {
 			<View style={styles.header}>
 				<View>
 					<TouchableOpacity onPress={() => navigation.navigate("Main")}>
-						<FontAwesome name="arrow-left" size={30} color={styles.icon} />
+						<FontAwesome name="arrow-left" size={30} color={"#fff"} />
 					</TouchableOpacity>
 				</View>
 				<View style={{ width: "40%" }}>

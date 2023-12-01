@@ -4,7 +4,9 @@ const COLORS = {
   primaryPurple: "#54007C",
   borderPurple: "#A800F9",
   normalWhite: "#fff",
-  text: "#a1a1a1",
+  subtitle: 'rgba(255, 255, 255, 0.61)',
+  background: "#171715",
+  component: "#383837",
 }
 
 const styles = StyleSheet.create({
@@ -20,7 +22,7 @@ const styles = StyleSheet.create({
     },
     containerForm:{
       flex: 1,
-      backgroundColor: COLORS.normalWhite,
+      backgroundColor: COLORS.background,
       borderTopRightRadius: 25,
       borderTopLeftRadius: 25,
       paddingStart: '5%',
@@ -31,9 +33,10 @@ const styles = StyleSheet.create({
       fontWeight: 'bold',
       marginTop: 28,
       marginBottom: 12,
+      color: COLORS.normalWhite,
     },
     text:{
-      color: COLORS.text,
+      color: COLORS.subtitle,
     },
     buttonContainer:{
       flexDirection: 'row',
@@ -45,7 +48,7 @@ const styles = StyleSheet.create({
       
     },
     buttonLogin:{
-      backgroundColor: '#d9d9d9',
+      backgroundColor: COLORS.subtitle,
       borderRadius: 50,
       paddingVertical: 8,
       width: '48%',
@@ -66,7 +69,7 @@ const styles = StyleSheet.create({
       color: COLORS.primaryPurple,
     },
     buttonTextConta:{
-      color: '#000',
+      color: COLORS.subtitle,
     },
     labelPJ:{
       paddingVertical: 8,
@@ -74,7 +77,7 @@ const styles = StyleSheet.create({
       alignItems: 'center',
     },
     textPJ:{
-      color: COLORS.text,
+      color: COLORS.subtitle,
     },
 })
 

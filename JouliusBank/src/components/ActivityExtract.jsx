@@ -9,7 +9,7 @@ export default function ActivityExtract(props) {
 				<FontAwesome
 					name="credit-card"
 					size={30}
-					color={"#000"}
+					color={"#fff"}
 					style={styles.icon}
 				/>
 				<View style={styles.activityTest}>

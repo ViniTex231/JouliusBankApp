@@ -94,7 +94,7 @@ export default function Profile({ navigation }){
             <FontAwesome 
               name="arrow-left"
               size={30}
-              color={"#000"}
+              color={"#fff"}
               style={styles.icon}
             />
           </TouchableOpacity>
@@ -121,28 +121,28 @@ export default function Profile({ navigation }){
         <Text style={styles.textProfile}>Seus Dados</Text>
 
         <View style={styles.profileDetails}>
-          <Text>Nome</Text>
-          <Text>{nome}</Text>
+          <Text style={{ color: "#fff" }}>Nome</Text>
+          <Text style={{ color: "#fff" }}>{nome}</Text>
         </View>
 
         <View style={styles.profileDetails}>
-          <Text>CPF</Text>
-          <Text>{cpf}</Text>
+          <Text style={{ color: "#fff" }}>CPF</Text>
+          <Text style={{ color: "#fff" }}>{cpf}</Text>
         </View>
 
         <View style={styles.profileDetails}>
-          <Text>Agência</Text>
-          <Text>{agencia}</Text>
+          <Text style={{ color: "#fff" }}>Agência</Text>
+          <Text style={{ color: "#fff" }}>{agencia}</Text>
         </View>
 
         <View style={styles.profileDetails}>
-          <Text>Conta</Text>
-          <Text>{conta}</Text>
+          <Text style={{ color: "#fff" }}>Conta</Text>
+          <Text style={{ color: "#fff" }}>{conta}</Text>
         </View>
 
         <View style={styles.profileDetails}>
-          <Text>Email</Text>
-          <Text>{email}</Text>
+          <Text style={{ color: "#fff" }}>Email</Text>
+          <Text style={{ color: "#fff" }}>{email}</Text>
         </View>
 
         <View style={styles.buttonView}>

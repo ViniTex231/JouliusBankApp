@@ -64,7 +64,7 @@ export default function Card( {navigation} ) {
 						<FontAwesome
 							name="arrow-left"
 							size={30}
-							color={"#000"}
+							color={"#fff"}
 							style={styles.icon}
 						/>
 					</TouchableOpacity>
@@ -90,36 +90,36 @@ export default function Card( {navigation} ) {
 				<Text style={styles.textCard}>Dados do Cartão</Text>
 
 				<View style={styles.cardDetails}>
-					<Text>Nome</Text>
-					<Text>{nome}</Text>
+					<Text style={{ color: "#fff" }}>Nome</Text>
+					<Text style={{ color: "#fff" }}>{nome}</Text>
 				</View>
 
 				<View style={styles.cardDetails}>
-					<Text>Número</Text>
-					<Text>{numero}</Text>
+					<Text style={{ color: "#fff" }}>Número</Text>
+					<Text style={{ color: "#fff" }}>{numero}</Text>
 				</View>
 
 				<View style={styles.cardDetails}>
-					<Text>Validade</Text>
-					<Text>{validade}</Text>
+					<Text style={{ color: "#fff" }}>Validade</Text>
+					<Text style={{ color: "#fff" }}>{validade}</Text>
 				</View>
 
 				<View style={styles.cardDetails}>
-					<Text>CVV</Text>
-					<Text>{cvv}</Text>
+					<Text style={{ color: "#fff" }}>CVV</Text>
+					<Text style={{ color: "#fff" }}>{cvv}</Text>
 				</View>
 			</View>
 
 			<View style={styles.limitHeader}>
 				<Text style={styles.textCard}>Limite</Text>
 				<View style={styles.cardDetails}>
-					<Text>Limite total</Text>
-					<Text>{"R$ " + limite}</Text>
+					<Text style={{ color: "#fff" }}>Limite total</Text>
+					<Text style={{ color: "#fff" }}>{"R$ " + limite}</Text>
 				</View>
 
 				<View style={styles.cardDetails}>
-					<Text>Limite utilizado</Text>
-					<Text>R$ 2136</Text>
+					<Text style={{ color: "#fff" }}>Limite utilizado</Text>
+					<Text style={{ color: "#fff" }}>R$ 2136</Text>
 				</View>
 			</View>
 

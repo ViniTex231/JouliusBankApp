@@ -2,11 +2,17 @@ import { StyleSheet } from "react-native";
 
 const COLORS = {
 	primaryPurple: "#54007C",
-};
+	borderPurple: "#A800F9",
+	normalWhite: "#fff",
+	subtitle: 'rgba(255, 255, 255, 0.61)',
+	background: "#171715",
+	component: "#383837",
+  }
 
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
+		backgroundColor: COLORS.background,
 	},
 	containerLogin: {
 		width: "100%",
@@ -27,7 +33,7 @@ const styles = StyleSheet.create({
 		backgroundColor: COLORS.primaryPurple,
 	},
 	textLogin: {
-		color: "#fff",
+		color: COLORS.normalWhite,
 		fontSize: 24,
 		paddingBottom: "5%",
 	},
@@ -38,17 +44,18 @@ const styles = StyleSheet.create({
 		marginTop: "5%",
 	},
 	inputView: {
-		borderBottomColor: "#A800F9",
+		borderBottomColor: COLORS.borderPurple,
 		borderBottomWidth: 2,
 		width: "30%",
 		marginTop: "5%",
 	},
 	textDesc: {
-		color: "#727272",
+		color: COLORS.normalWhite,
 	},
 	input: {
 		// paddingStart: '5%',
 		opacity: 0.5,
+		color: COLORS.subtitle,
 	},
 	buttonLogin: {
 		backgroundColor: COLORS.primaryPurple,
@@ -63,7 +70,7 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 	},
 	buttonTextLogin: {
-		color: "#fff",
+		color: COLORS.normalWhite,
 	},
 	icon: {
 		paddingStart: "3%",

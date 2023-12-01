@@ -1,14 +1,18 @@
 import { StyleSheet } from "react-native";
 
 const COLORS = {
-    primaryPurple: "#54007C",
-    borderPurple: "#A800F9",
-    normalWhite: "#fff",
-}
+	primaryPurple: "#54007C",
+	borderPurple: "#A800F9",
+	normalWhite: "#fff",
+	subtitle: 'rgba(255, 255, 255, 0.61)',
+	background: "#171715",
+	component: "#383837",
+  }
 
 const styles = StyleSheet.create({
   container:{
     flex: 1,
+    backgroundColor: COLORS.background
   },
   header:{
     textAlign: 'right',
@@ -37,7 +41,7 @@ const styles = StyleSheet.create({
     borderBottomColor: COLORS.borderPurple,
     borderBottomWidth: 2,
     width: "30%",
-    color: "#727272",
+    color: COLORS.subtitle,
   },
   boxValue:{
     alignItems: 'center',
@@ -45,7 +49,8 @@ const styles = StyleSheet.create({
   },
   input:{
     marginTop: "5%",
-    fontSize: 32, 
+    fontSize: 32,
+    color: COLORS.normalWhite,
   },
   description:{
     paddingStart: "5%",

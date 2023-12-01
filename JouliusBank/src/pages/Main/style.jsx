@@ -1,14 +1,18 @@
 import { StyleSheet } from "react-native";
 
 const COLORS = {
-    primaryPurple: "#54007C",
-    borderPurple: "#A800F9",
-    normalWhite: "#fff",
-}
+	primaryPurple: "#54007C",
+	borderPurple: "#A800F9",
+	normalWhite: "#fff",
+	subtitle: 'rgba(255, 255, 255, 0.61)',
+	background: "#171715",
+	component: "#383837",
+  }
 
 const styles = StyleSheet.create({
     container:{
         flex: 1,
+        backgroundColor: COLORS.background
     },
     header:{
         width: "100%",
@@ -31,7 +35,7 @@ const styles = StyleSheet.create({
         borderRadius: 20,
     },
     textSaldo:{
-        color: COLORS.normalWhite,
+        color: COLORS.subtitle,
         fontSize: 20,
         paddingStart: 20,
         paddingTop: 10,
@@ -58,7 +62,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     menuButton:{
-        backgroundColor: COLORS.primaryPurple,
+        backgroundColor: COLORS.component,
         alignItems: 'center',
         justifyContent: 'center',
         width: 85,
@@ -85,7 +89,7 @@ const styles = StyleSheet.create({
         borderBottomColor: COLORS.borderPurple,
         borderBottomWidth: 2,
         width: "30%",
-        color: "#fff",
+        color: COLORS.subtitle,
     },
     activity:{
         paddingTop: "5%",
@@ -122,10 +126,11 @@ const styles = StyleSheet.create({
     },
     activityTest: {
         width: 250,
+        color: COLORS.subtitle,
         
     },
     containerActivities:{
-        backgroundColor: COLORS.primaryPurple,
+        backgroundColor: COLORS.background,
         width: '100%',
         height: '100%',
         borderTopLeftRadius: 25,

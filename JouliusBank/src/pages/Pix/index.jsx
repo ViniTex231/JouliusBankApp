@@ -30,7 +30,7 @@ export default function Pix({ navigation }) {
 						<FontAwesome
 							name="arrow-left"
 							size={30}
-							color={"#000"}
+							color={"#fff"}
 							style={styles.icon}
 						/>
 					</TouchableOpacity>
@@ -44,8 +44,11 @@ export default function Pix({ navigation }) {
 				</View>
 			</View>
 
-			<View style={styles.destinyAccount}>
-				<TextInput label="Conta de Destino" placeholder="******" onChangeText={(value) => setDestino(value)} />
+			<View style={styles.value}>
+				<Text style={styles.textValue}>Conta de Destino</Text>
+				<View style={styles.boxValue}>
+					<TextInput placeholder="******" style={styles.input} onChangeText={(value) => setDestino(value)} />
+				</View>
 			</View>
 
 			<View style={styles.value}>

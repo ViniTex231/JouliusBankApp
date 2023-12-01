@@ -1,13 +1,18 @@
 import { StyleSheet } from "react-native";
 
 const COLORS = {
-  primaryPurple: "#54007C",
-  borderPurple: "#A800F9",
-}
+	primaryPurple: "#54007C",
+	borderPurple: "#A800F9",
+	normalWhite: "#fff",
+	subtitle: 'rgba(255, 255, 255, 0.61)',
+	background: "#171715",
+	component: "#383837",
+  }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: COLORS.background
   },
   containerSignUp:{
     width: "100%",
@@ -42,10 +47,11 @@ const styles = StyleSheet.create({
     marginTop: "3%",
   },
   textDesc:{
-    color: "#727272",
+    color: COLORS.normalWhite,
   },
   input:{
     opacity: 0.5,
+    color: COLORS.subtitle,
   },
   button:{
     justifyContent: 'center',
@@ -60,7 +66,7 @@ const styles = StyleSheet.create({
     width: 200,
   },
   buttonText:{
-    color: "#fff",
+    color: COLORS.normalWhite,
   },
   buttonLogin:{
     backgroundColor: COLORS.primaryPurple,
@@ -71,7 +77,7 @@ const styles = StyleSheet.create({
     width: 200,
   },
   buttonTextSignUp:{
-    color: "#fff",
+    color: COLORS.normalWhite,
   },
   icon:{
     paddingStart: "3%",
