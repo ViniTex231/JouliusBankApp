@@ -72,6 +72,20 @@ export async function criarContato(jwt, client, email) {
     }
 }
 
+export async function getContato(jwt) {
+    try {
+        const resposta = await axiosInstance.get('contatos/', 
+        {
+            headers: {
+                Authorization: `Bearer ${jwt}`,
+            }
+        })
+        return resposta.data
+    } catch (erro) {
+        console.log(erro)
+    }
+}
+
 export async function criarToken(registro, senha, setAuthToken) {
     try {
         const resposta = await axiosInstance.post('auth/jwt/create/', {

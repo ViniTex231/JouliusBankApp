@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react"
 import styles from "../Profile/style"
 import { FontAwesome } from "@expo/vector-icons"
 import * as ImagePicker from 'expo-image-picker'
-import { getConta, useAuth, getNome, getPerfil, putImagem } from "../../services/api"
+import { getConta, useAuth, getNome, getPerfil, putImagem, getContato } from "../../services/api"
 
 export default function Profile({ navigation }){
 
@@ -21,7 +21,6 @@ export default function Profile({ navigation }){
         const conta1 = await getConta(jwt, contaC)
         setAgencia(conta1.agencia)
         setConta(conta1.numero)
-        setEmail(conta1.email)
       } catch (err) {
         console.log("FETCH, agencia, conta, email, DATA err", err)
       }
@@ -45,6 +44,19 @@ export default function Profile({ navigation }){
       }
     }
     fetchUserData()
+  }, [])
+
+
+  useEffect(()=>{
+    const fetchContactData = async () => {
+      try {
+        const contato = await getContato(jwt)
+        setEmail(contato[0].email)
+      } catch (err) {
+        console.log("FETCH email DATA err", err)
+      }
+    }
+    fetchContactData()
   }, [])
 
   const handleImagePicker = async () => {
