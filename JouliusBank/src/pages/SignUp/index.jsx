@@ -16,7 +16,7 @@ export default function SignUp({ navigation }) {
 	const {login} = useAuth()
 
 	const submit = async () => {
-		const usuario = await criarUsuario(cpf, nome, social, "foto_logo", nascimento, senha)
+		const usuario = await criarUsuario(cpf, nome, social, nascimento, senha)
 		console.log(usuario)
 
 		if (usuario === 201){

@@ -19,11 +19,11 @@ export default function LoanPayment({ navigation }) {
                     </TouchableOpacity>
                 </View>
                 <View style={{ width: "40%" }}>
-                    {/* <Image
+                    <Image
                         source={require("../../assets/iconeLogoRoxo.png")}
                         style={{ width: "100%" }}
                         resizeMode="contain"
-                    /> */}
+                    />
                 </View>
             </View>
 

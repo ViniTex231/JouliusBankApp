@@ -37,16 +37,15 @@ export const useAuth = () => {
 }
 
 export const axiosInstance = axios.create({ 
-    baseURL: 'http://10.234.93.57:8000/api/v1/'
+    baseURL: 'http://10.109.71.16:8000/api/v1/'
 })
 
-export async function criarUsuario(registro, nome_razao_social, nome_social_fantasia, foto_logo, data_nascimento_abertura, password) {
+export async function criarUsuario(registro, nome_razao_social, nome_social_fantasia, data_nascimento_abertura, password) {
     try{
         const resposta = await axiosInstance.post('auth/users/', {
             registro: registro,
             nome_razao_social: nome_razao_social,
             nome_social_fantasia: nome_social_fantasia,
-            foto_logo: foto_logo,
             data_nascimento_abertura: data_nascimento_abertura,
             password: password
         })
@@ -295,11 +294,31 @@ export async function getNome(jwt){
             nome_social_fantasia: name.nome_social_fantasia,
             foto_logo: name.foto_logo,
             data_nascimento_abertura: name.data_nascimento_abertura,
-            registro: data.registro
+            registro: name.registro
         }))
 
         return mappedNames
     } catch (erro){
+        console.log(erro)
+    }
+}
+
+
+export async function putImagem(jwt, formData, registro){
+    try {
+        console.log("api"+formData)
+        const headers = {
+            'Content-Type': 'multipart/form-data',
+            Authorization: `Bearer ${jwt}`,
+        };
+        
+        const resposta = await axiosInstance.patch(
+        `auth/users/${registro}/`, formData,
+        {
+            headers: headers
+        })
+        return resposta.status
+    } catch (erro) {
         console.log(erro)
     }
 }

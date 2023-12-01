@@ -26,7 +26,6 @@ const styles = StyleSheet.create({
     marginTop: 30,
   },
   pic:{
-    backgroundColor: '#a1a1a1',
     width: 238,
     height: 238,
     borderRadius: 100,
@@ -53,6 +52,23 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingEnd: 10,
+  },
+  buttonView:{
+    marginTop: 20,
+    marginBottom: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  buttonLogin:{
+    backgroundColor: COLORS.primaryPurple,
+    borderRadius: 10,
+    paddingVertical: 8,
+    justifyContent: "center",
+    alignItems: "center",
+    width: 200,
+  },
+  buttonText:{
+    color: COLORS.normalWhite,
   }
 })
 

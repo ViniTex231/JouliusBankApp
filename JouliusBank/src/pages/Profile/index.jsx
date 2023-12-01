@@ -2,46 +2,18 @@ import { View, Text, TouchableOpacity, Image, TextInput } from "react-native"
 import React, { useEffect, useState } from "react"
 import styles from "../Profile/style"
 import { FontAwesome } from "@expo/vector-icons"
-import axios from "axios"
 import * as ImagePicker from 'expo-image-picker'
-import { getConta, useAuth, getNome, getPerfil } from "../../services/api"
+import { getConta, useAuth, getNome, getPerfil, putImagem } from "../../services/api"
 
-const Profile = ({ navigation }) => {
+export default function Profile({ navigation }){
 
-  const {jwt, registroAtivo, contaC} = useAuth()
+  const {jwt, registroAtivo, registro, contaC} = useAuth()
   const [nome, setNome] = useState("")
   const [cpf, setCpf] = useState("")
   const [agencia, setAgencia] = useState(0)
   const [conta, setConta] = useState(0)
   const [email, setEmail] = useState("")
-  const [image, setImage] = useState("")
-  const [preview, setPreview] = useState("")
-
-  const gallery = async ()=>{
-    const result = ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.All,
-      allowsEditing: true,
-      aspect: [4, 3],
-      quality: 1,
-    })
-    console.log((await result).assets[0].uri)
-
-    if (!(await result).canceled) {
-      setPreview((await result).assets[0].uri)
-    }
-  }
-
-  useEffect(() => {
-    if (!image){
-      setImage(undefined)
-      return
-    }
-
-    const objectUrl = URL.createObjectURL(image)
-    setPreview(objectUrl)
-    return () => URL.revokeObjectURL(objectUrl)
-  }, [image])
-
+  const [image, setImage] = useState(null)
 
   useEffect(()=>{
     const fetchUserData = async () => {
@@ -64,12 +36,55 @@ const Profile = ({ navigation }) => {
         const conta1 = await getPerfil(jwt)
         setCpf(conta1[0].registro)
         setNome(conta1[0].nome_razao_social)
+        setImage(conta1[0].foto_logo)
+
+        const image = await putImagem(jwt)
+
       } catch (err) {
         console.log("FETCH cpf DATA err", err)
       }
     }
     fetchUserData()
   }, [])
+
+  const handleImagePicker = async () => {
+    console.log("aaa")
+    const { assets, canceled } = await ImagePicker.launchImageLibraryAsync({
+      allowsEditing: true,
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      base64: false,
+      aspect: [4, 4],
+      quality: 1,
+    });
+  
+    if (!canceled) {
+      const filename = assets[0].uri.substring(
+        assets[0].uri.lastIndexOf("/") + 1,
+        assets[0].uri.length
+      );
+      const extend = filename.split(".")[1];
+      const formData = new FormData();
+      formData.append(
+        "foto_logo",
+        {
+          name: filename,
+          uri: assets[0].uri,
+          type: "image/" + extend,
+        }
+      );
+      
+      console.log("pegar img"+formData)
+      setImage(formData);
+      };
+    }
+
+  
+  const submit = async () => {
+    const response = putImagem(jwt, image, registro)
+    console.log("resposta"+response)
+  }
+  
+ 
 
   return(
     <View style={styles.container}>
@@ -85,19 +100,19 @@ const Profile = ({ navigation }) => {
           </TouchableOpacity>
         </View>
         <View style={{width: "40%"}}>
-          <Image 
-            source={require("../../assets/iconeLogo.png")}
-            style={{width: "100%"}}
-            resizeMode="contain"
-          />
         </View>
       </View>
 
       <View style={styles.formPic}>
         <View style={styles.pic}>
+          <Image 
+            source={{uri: image}}
+            style={{width: 238, height: 238, borderRadius: 100}}
+            resizeMode="contain"
+          />
           
         </View>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => handleImagePicker()}>
           <Text style={styles.textPic}>Alterar foto</Text>
         </TouchableOpacity>
       </View>
@@ -129,10 +144,23 @@ const Profile = ({ navigation }) => {
           <Text>Email</Text>
           <Text>{email}</Text>
         </View>
+
+        <View style={styles.buttonView}>
+						<TouchableOpacity
+							style={styles.buttonLogin}
+							onPress={() => submit()}
+						>
+							<Text style={styles.buttonText}>Atualizar</Text>
+						</TouchableOpacity>
+					</View>
+
       </View>
 
     </View>
   )
 }
 
-export default Profile
+
+
+
+

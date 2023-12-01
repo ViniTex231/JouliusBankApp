@@ -113,10 +113,12 @@ const styles = StyleSheet.create({
         color: '#fff',
     },
     imageMan: {
-        width: 70,
         position: 'absolute',
-        top: -200,
-        right: 20
+        paddingTop: 80,
+        right: 20,
+        width: 100,
+        height: 100,
+        borderRadius: 100,
     },
     activityTest: {
         width: 250,

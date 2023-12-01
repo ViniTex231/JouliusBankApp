@@ -4,12 +4,13 @@ import { useFocusEffect } from "@react-navigation/native";
 import styles from "./style";
 import MenuButton from "../../components/MenuButton";
 import Activity from "../../components/Activity";
-import { getConta, getMovimentacao, useAuth } from "../../services/api";
+import { getConta, getMovimentacao, getPerfil, useAuth } from "../../services/api";
 
 const Main = ({ navigation }) => {
 	const {jwt, registroAtivo, contaC} = useAuth()
 	const [balance, setBalance] = useState(0)
 	const [movements, setMovements] = useState()
+	const [image, setImage] = useState(null)
 
 	useFocusEffect(
 		React.useCallback(() => {
@@ -40,6 +41,18 @@ const Main = ({ navigation }) => {
 		fetchUserData();
 	}, [balance]);
 
+	useEffect(() => {
+		const fetchImageData = async () => {
+			try {
+				const conta = await getPerfil(jwt)
+				setImage(conta[0].foto_logo)
+			} catch (err) {
+				console.log("FETCH image DATA err", err)
+			}
+		}
+		fetchImageData()
+	}, [])
+
 
 	return (
 		<View style={styles.container}>
@@ -50,7 +63,7 @@ const Main = ({ navigation }) => {
 						style={styles.logo}
 					/>
 						<Image
-							source={require("../../assets/man.png")}
+							source={{ uri: image }}
 							style={styles.imageMan}
 							resizeMode="contain"
 						/>

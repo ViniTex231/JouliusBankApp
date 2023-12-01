@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
         color: COLORS.normalWhite,
     },
     buttonView:{
-        marginTop: 10,
+        marginTop: 50,
         justifyContent: 'center',
         alignItems: 'center',
     },
