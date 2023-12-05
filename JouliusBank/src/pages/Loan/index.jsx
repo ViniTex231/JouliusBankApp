@@ -29,7 +29,7 @@ export default function Loan({ navigation }) {
 				</View>
 				<View style={{ width: "40%" }}>
 					<Image
-						source={require("../../assets/iconeLogo.png")}
+						source={require("../../assets/iconeLogoRoxo.png")}
 						style={{ width: "100%" }}
 						resizeMode="contain"
 					/>

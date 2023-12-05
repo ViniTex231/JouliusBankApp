@@ -16,10 +16,12 @@ const styles = StyleSheet.create({
     },
     header:{
         width: "100%",
-        height: "15%",
+        height: "fit-content",
         display: 'flex',
-        justifyContent: 'center',
-        paddingStart: "5%"
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between",
+        marginBottom: 20
     },
     boxBalance:{
         width: "100%",
@@ -117,17 +119,14 @@ const styles = StyleSheet.create({
         color: '#fff',
     },
     imageMan: {
-        position: 'absolute',
-        paddingTop: 80,
-        right: 20,
         width: 100,
         height: 100,
         borderRadius: 100,
+        margin: 10
     },
     activityTest: {
         width: 250,
         color: COLORS.subtitle,
-        
     },
     containerActivities:{
         backgroundColor: COLORS.background,
@@ -138,9 +137,8 @@ const styles = StyleSheet.create({
         marginTop: '10%',
     },
     logo:{
-        marginTop: 100
+        // margin: 100
     },
-
     scrol:{
         height: 300,
         

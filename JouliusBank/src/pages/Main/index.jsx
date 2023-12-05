@@ -59,14 +59,14 @@ const Main = ({ navigation }) => {
 			<TouchableOpacity onPress={() => navigation.navigate("Profile")}>
 				<View style={styles.header}>	
 					<Image
-						source={require("../../assets/iconeLogo.png")}
+						source={require("../../assets/iconeLogoRoxo.png")}
 						style={styles.logo}
 					/>
-						<Image
-							source={{ uri: image }}
-							style={styles.imageMan}
-							resizeMode="contain"
-						/>
+					<Image
+						source={{ uri: image }}
+						style={styles.imageMan}
+						resizeMode="contain"
+					/>
 				</View>
 			</TouchableOpacity>
 

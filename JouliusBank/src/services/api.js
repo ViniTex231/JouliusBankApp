@@ -37,7 +37,7 @@ export const useAuth = () => {
 }
 
 export const axiosInstance = axios.create({ 
-    baseURL: 'http://10.234.93.57:8000/api/v1/'
+    baseURL: 'http://10.109.71.16:8000/api/v1/'
 })
 
 export async function criarUsuario(registro, nome_razao_social, nome_social_fantasia, data_nascimento_abertura, password) {

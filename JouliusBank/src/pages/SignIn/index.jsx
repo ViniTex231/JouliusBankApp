@@ -1,4 +1,4 @@
-import { View, Text, Image, TouchableOpacity, TextInput } from "react-native";
+import { View, Text, Image, TouchableOpacity, TextInput, Alert } from "react-native";
 import React, { useState } from "react";
 import styles from "../SignIn/style";
 import { AntDesign } from "@expo/vector-icons";
@@ -10,10 +10,16 @@ export default function SignIn({ navigation }) {
 	const [senha, setSenha] = useState('')
 	const [conta, setConta] = useState('')
 	const [showPassword, setShowPassword] = useState(false)
+	const [loginAttempts, setLoginAttempts] = useState(0)
 
 	const { login, ativo, registroAtivo } = useAuth();
 
 	const submit = async () => {
+		if (loginAttempts >= 3){
+			Alert.alert('Limite de tentativas excedido', 'Sua conta foi bloqueada')
+			return
+		}
+
 		const token = await criarToken(cpf, senha, login)
 		console.log(token)
 
@@ -23,6 +29,12 @@ export default function SignIn({ navigation }) {
 			
 			registroAtivo(cpf)
 			navigation.navigate('Main')
+		} else {
+			setLoginAttempts(loginAttempts + 1)
+
+			if (loginAttempts === 2){
+				Alert.alert('Atenção', 'Você excedeu o limite de tentativas')
+			}
 		}
 	}
 
@@ -69,7 +81,7 @@ export default function SignIn({ navigation }) {
 
 				<View style={styles.inputView}>
 					<Text style={styles.textDesc}>Senha</Text>
-					<View>
+					<View style={styles.inputPassword}>
 						<TextInput style={styles.input} placeholder="******" secureTextEntry={!showPassword} onChangeText={(value) => setSenha(value)}/>
 						<TouchableOpacity onPress={toggleShowPassword}>
 							<AntDesign

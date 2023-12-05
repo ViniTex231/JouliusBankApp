@@ -64,6 +64,7 @@ const styles = StyleSheet.create({
 		justifyContent: "center",
 		alignItems: "center",
 		width: 200,
+		marginTop: 20,
 	},
 	buttonView:{
 		justifyContent: 'center',
@@ -75,6 +76,11 @@ const styles = StyleSheet.create({
 	icon: {
 		paddingStart: "3%",
 	},
+	inputPassword:{
+		display: 'flex',
+		flexDirection: 'row',
+		justifyContent: 'space-between',
+	}
 });
 
 export default styles;
